@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Destructurama.Attributed;
-using Domain.Event;
+using Domain.Events;
 using Newtonsoft.Json;
 
 namespace Application.Common;

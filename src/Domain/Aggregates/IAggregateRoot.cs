@@ -1,5 +1,5 @@
 using Domain.Entities;
-using Domain.Event;
+using Domain.Events;
 
 namespace Domain.Aggregates;
 
