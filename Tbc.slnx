@@ -1,5 +1,6 @@
 ﻿<Solution>
   <Folder Name="/src/">
     <Project Path="src/Domain/Domain.csproj" Type="Classic C#" />
+    <Project Path="src\Application\Application.csproj" Type="Classic C#" />
   </Folder>
 </Solution>
