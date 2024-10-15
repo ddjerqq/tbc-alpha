@@ -4,5 +4,6 @@
     <Project Path="src\Application\Application.csproj" Type="Classic C#" />
     <Project Path="src\Infrastructure\Infrastructure.csproj" Type="Classic C#" />
     <Project Path="src\Persistence\Persistence.csproj" Type="Classic C#" />
+    <Project Path="src\WebApi\WebApi.csproj" Type="Classic C#" />
   </Folder>
 </Solution>
