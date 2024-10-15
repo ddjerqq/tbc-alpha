@@ -3,40 +3,32 @@ using Domain.ValueObjects;
 
 namespace Domain.Aggregates;
 
-public sealed class User : AggregateRoot<Ulid>
+public sealed class User(Ulid id) : AggregateRoot<Ulid>(id)
 {
-    public string FullName { get; init; }
-    public string Email { get; init; }
-    public string PasswordHash { get; private set; }
-    public Currency PreferredCurrency { get; set; }
-    public ICollection<Account> Accounts { get; init; }
+    public required string FullName { get; init; }
+    public required string Email { get; init; }
+    public required string PasswordHash { get; set; }
+    public required DateTime DateOfBirth { get; set; }
+    public int Age => DateTime.Now.Year - DateOfBirth.Year;
 
-    // for ef core
-    private User(Ulid id, string fullName, string email, Currency preferredCurrency, string passwordHash, ICollection<Account> accounts) : base(id)
-    {
-        FullName = fullName;
-        Email = email;
-        PreferredCurrency = preferredCurrency;
-        PasswordHash = passwordHash;
-        Accounts = accounts;
-    }
+    public required AnnualCirculation AnnualCirculation { get; set; }
+    public required ICollection<SavingGoal> SavingGoals { get; set; }
 
-    public User(string fullName, string email, Currency preferredCurrency, string password) : this(
-        Ulid.NewUlid(),
-        fullName,
-        email,
-        preferredCurrency,
-        BC.EnhancedHashPassword(password),
-        [])
-    {
-    }
+    /// <summary>
+    /// The amount of money the user spent this year from their credit.
+    /// </summary>
+    public required float CreditUtilization { get; set; }
 
-    public bool TryChangePassword(string currentPassword, string newPassword)
-    {
-        if (!BC.EnhancedVerify(currentPassword, PasswordHash))
-            return false;
+    /// <summary>
+    /// The amount of money the user spent this year.
+    /// </summary>
+    public required Money HistoricalSpending { get; set; }
 
-        PasswordHash = BC.EnhancedHashPassword(newPassword);
-        return true;
-    }
+    /// <summary>
+    /// The risk tolerance of the user.
+    /// </summary>
+    public required Level RiskTolerance { get; set; }
+
+    public required Currency PreferredCurrency { get; set; }
+    public required ICollection<Account> Accounts { get; init; } = [];
 }
