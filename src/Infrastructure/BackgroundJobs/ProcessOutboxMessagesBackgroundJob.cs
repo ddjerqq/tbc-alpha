@@ -63,7 +63,6 @@ public sealed class ProcessOutboxMessagesBackgroundJob(IPublisher publisher, IAp
             }
         }
 
-        // TODO do we save changes here? or right after publishing each event?
         await dbContext.SaveChangesAsync(context.CancellationToken);
     }
 }
