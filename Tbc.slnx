@@ -1,1 +1,5 @@
-﻿<Solution />
+﻿<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Domain/Domain.csproj" Type="Classic C#" />
+  </Folder>
+</Solution>
