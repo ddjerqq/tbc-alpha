@@ -13,5 +13,6 @@ public sealed class ConfigureInfrastructure : ConfigurationBase
     {
         services.AddMemoryCache();
         services.AddScoped<ICurrentUserAccessor, HttpContextCurrentUserAccessor>();
+        services.AddScoped<IJwtGenerator, JwtGenerator>();
     }
 }

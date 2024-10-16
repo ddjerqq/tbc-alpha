@@ -1,12 +1,11 @@
+#pragma warning disable CS1591
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebApi.Filters;
 
-/// <inheritdoc />
 public sealed class FluentValidationFilter : IActionFilter
 {
-    /// <inheritdoc />
     public void OnActionExecuting(ActionExecutingContext context)
     {
         if (!context.ModelState.IsValid)
@@ -29,7 +28,6 @@ public sealed class FluentValidationFilter : IActionFilter
         }
     }
 
-    /// <inheritdoc />
     public void OnActionExecuted(ActionExecutedContext context)
     {
     }

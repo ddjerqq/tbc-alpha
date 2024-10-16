@@ -1,56 +1,40 @@
 ﻿using System.Numerics;
+using System.Security.Cryptography;
 
 namespace Domain.ValueObjects;
 
-public readonly record struct Iban(string CountryCode, string BankIdentifier, long AccountNumber, int CheckDigits) : IValueObject
+public readonly record struct Iban(string CountryCode, string BankIdentifier, int Branch, int AccountNumber, int CheckDigits) : IValueObject
 {
-    public static Iban Generate(string bankIdentifier, string countryCode, long accountNumber)
+    public static Iban Generate(string countryCode, string bankName, int branch, int accountNumber)
     {
-        var checkDigits = CalculateCheckDigits(countryCode, bankIdentifier, accountNumber);
-        return new Iban(countryCode, bankIdentifier, accountNumber, checkDigits);
+        var bankIdentifier = new string(bankName.Where(char.IsLetterOrDigit).ToArray()).ToUpper().PadRight(8, '0').Substring(0, 8);
+        var checkDigits = CalculateCheckDigits("DE", bankIdentifier, branch, accountNumber);
+        return new Iban(countryCode, bankIdentifier, branch, accountNumber, checkDigits);
     }
 
-    public override string ToString() => $"{CountryCode}{CheckDigits:D2}{BankIdentifier}{AccountNumber:D10}";
+    public static Iban Generate(int branch, int accountNumber) => Generate(Constants.BankCountryCode, Constants.BankName, branch, accountNumber);
 
-    public static bool TryParse(string value, out Iban iban)
+    public override string ToString() => $"{CountryCode}{CheckDigits:D2}{BankIdentifier}{Branch:D4}{AccountNumber:D10}";
+
+    public static Iban Parse(string ibanString)
     {
-        iban = default;
+        if (ibanString.Length != 22)
+            throw new FormatException("Invalid IBAN length.");
 
-        if (value.Length != 24)
-            return false;
+        var countryCode = ibanString[..2];
+        var checkDigits = int.Parse(ibanString[2..4]);
+        var bankIdentifier = ibanString[4..12];
+        var branch = int.Parse(ibanString[12..16]);
+        var accountNumber = int.Parse(ibanString[16..]);
 
-        var countryCode = value[..2];
-        var checkDigits = int.Parse(value[2..2]);
-        var bankIdentifier = value[4..4];
-        var accountNumber = long.Parse(value[8..10]);
-
-        if (checkDigits != CalculateCheckDigits(countryCode, bankIdentifier, accountNumber))
-            return false;
-
-        iban = new Iban(countryCode, bankIdentifier, accountNumber, checkDigits);
-        return true;
+        return new Iban(countryCode, bankIdentifier, branch, accountNumber, checkDigits);
     }
 
-    public static Iban Parse(string value)
+    private static int CalculateCheckDigits(string countryCode, string bankIdentifier, int branch, int accountNumber)
     {
-        if (!TryParse(value, out var iban))
-            throw new FormatException("Invalid IBAN format");
-
-        return iban;
-    }
-
-    private static int CalculateCheckDigits(string countryCode, string bankIdentifier, long accountNumber)
-    {
-        var accountNumberStr = accountNumber.ToString().PadLeft(10, '0');
-
-        var bban = $"{bankIdentifier}{accountNumberStr}";
-
         var numericCountryCode = string.Concat(countryCode.Select(c => (c - 'A' + 10).ToString()));
+        var bban = $"{bankIdentifier}{branch:D4}{accountNumber:D10}";
         var ibanForCheck = $"{bban}{numericCountryCode}00";
-
-        var numericIban = BigInteger.Parse(ibanForCheck);
-        var checkDigits = (int)(98 - (numericIban % 97));
-
-        return checkDigits;
+        return (int)(98 - BigInteger.Parse(ibanForCheck) % 97);
     }
 }

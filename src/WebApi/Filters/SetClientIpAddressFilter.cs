@@ -1,3 +1,4 @@
+#pragma warning disable CS1591
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Sockets;
@@ -5,15 +6,10 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebApi.Filters;
 
-/// <inheritdoc />
 public sealed class SetClientIpAddressFilter : IActionFilter
 {
     private const string ClientIpItemName = "client_ip_address";
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="context"></param>
     [SuppressMessage("Usage", "ASP0019", Justification = "This is a filter, not a controller action")]
     public void OnActionExecuting(ActionExecutingContext context)
     {
@@ -28,7 +24,6 @@ public sealed class SetClientIpAddressFilter : IActionFilter
         context.HttpContext.Items[ClientIpItemName] = ipAddress.ToString();
     }
 
-    /// <inheritdoc />
     public void OnActionExecuted(ActionExecutedContext context)
     {
     }

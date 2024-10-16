@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using Application;
+using Application.Common;
 using Destructurama;
 using Domain.Common;
-using Infrastructure.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
@@ -35,24 +35,19 @@ public static class LoggingExt
     {
         var logPath = "LOG__PATH".FromEnvRequired();
 
-        var seqHost = "SEQ__HOST".FromEnvRequired();
-        var seqPort = "SEQ__PORT".FromEnvRequired();
-        var seqApiKey = "SEQ__API_KEY".FromEnvRequired();
-
         return config
             .MinimumLevel.Information()
             .MinimumLevel.Override("Quartz", LogEventLevel.Warning)
             .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
             .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
             .Destructure.UsingAttributes()
-            .Enrich.WithProperty("Application", "chfs")
+            .Enrich.WithProperty("Application", "tbc")
             .Enrich.FromLogContext()
             .Enrich.WithProcessId()
             .Enrich.WithThreadId()
             .Enrich.WithAssemblyName()
             .WriteTo.Debug()
             .WriteTo.Console(Formatters.CreateConsoleTextFormatter(TemplateTheme.Code))
-            .WriteTo.Seq($"http://{seqHost}:{seqPort}", apiKey: seqApiKey)
             .WriteTo.File(logPath,
                 outputTemplate: OutputFormat,
                 flushToDiskInterval: TimeSpan.FromSeconds(10),

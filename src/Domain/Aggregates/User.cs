@@ -8,11 +8,11 @@ public sealed class User(Ulid id) : AggregateRoot<Ulid>(id)
     public required string FullName { get; init; }
     public required string Email { get; init; }
     public required string PasswordHash { get; set; }
-    public required DateTime DateOfBirth { get; set; }
+    public required DateTime DateOfBirth { get; init; }
     public int Age => DateTime.Now.Year - DateOfBirth.Year;
 
     public required AnnualCirculation AnnualCirculation { get; set; }
-    public required ICollection<SavingGoal> SavingGoals { get; set; }
+    public required ICollection<SavingGoal> SavingGoals { get; set; } = [];
 
     /// <summary>
     /// The amount of money the user spent this year from their credit.

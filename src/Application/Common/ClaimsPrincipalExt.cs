@@ -2,7 +2,7 @@ using System.Security.Claims;
 using Domain.Aggregates;
 using Microsoft.IdentityModel.JsonWebTokens;
 
-namespace Infrastructure.Common;
+namespace Application.Common;
 
 public static class ClaimsPrincipalExt
 {

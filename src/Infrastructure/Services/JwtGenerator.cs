@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Services;
 
-public static class JwtGenerator
+public sealed class JwtGenerator : IJwtGenerator
 {
     public static readonly string ClaimsIssuer = "JWT__ISSUER".FromEnvRequired();
     public static readonly string ClaimsAudience = "JWT__AUDIENCE".FromEnvRequired();
@@ -55,19 +55,21 @@ public static class JwtGenerator
         ValidAlgorithms = [SecurityAlgorithms.HmacSha256],
     };
 
-    private static readonly JwtSecurityTokenHandler Handler = new();
-    private static readonly SymmetricSecurityKey SecurityKey = new(Encoding.UTF8.GetBytes(Key));
-    private static SigningCredentials SigningCredentials => new(SecurityKey, SecurityAlgorithms.HmacSha256);
+    private readonly JwtSecurityTokenHandler _handler = new();
+    private readonly SymmetricSecurityKey _securityKey = new(Encoding.UTF8.GetBytes(Key));
+    private SigningCredentials SigningCredentials => new(_securityKey, SecurityAlgorithms.HmacSha256);
 
-    public static string GenerateToken(IEnumerable<Claim> claims, TimeSpan expiration)
+    public string GenerateToken(IEnumerable<Claim> claims, TimeSpan? expiration = null)
     {
+        expiration ??= TimeSpan.FromSeconds(int.Parse("JWT__EXPIRATION".FromEnvRequired()));
+
         var token = new JwtSecurityToken(
             ClaimsIssuer,
             ClaimsAudience,
             claims,
-            expires: DateTime.UtcNow.Add(expiration),
+            expires: DateTime.UtcNow.Add(expiration.Value),
             signingCredentials: SigningCredentials);
 
-        return Handler.WriteToken(token);
+        return _handler.WriteToken(token);
     }
 }

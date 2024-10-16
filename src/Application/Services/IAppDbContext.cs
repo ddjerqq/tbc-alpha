@@ -1,5 +1,4 @@
 using Domain.Aggregates;
-using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 

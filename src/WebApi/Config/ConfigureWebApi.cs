@@ -1,3 +1,4 @@
+#pragma warning disable CS1591
 using System.ComponentModel;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -14,13 +15,11 @@ using ZymLabs.NSwag.FluentValidation;
 
 namespace WebApi.Config;
 
-/// <inheritdoc />
 [EditorBrowsable(EditorBrowsableState.Never)]
 public sealed class ConfigureWebApi : ConfigurationBase
 {
     private static readonly string[] CompressionTypes = ["application/octet-stream"];
 
-    /// <inheritdoc />
     public override void ConfigureServices(IServiceCollection services)
     {
         services.AddAntiforgery();
@@ -54,11 +53,7 @@ public sealed class ConfigureWebApi : ConfigurationBase
         services
             .AddControllers(o =>
             {
-                if (IsDevelopment)
-                {
-                    o.Filters.Add<ResponseTimeFilter>();
-                }
-
+                o.Filters.Add<ResponseTimeFilter>();
                 o.Filters.Add<SetClientIpAddressFilter>();
                 o.Filters.Add<FluentValidationFilter>();
                 o.RespectBrowserAcceptHeader = true;
@@ -66,8 +61,8 @@ public sealed class ConfigureWebApi : ConfigurationBase
             .AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
-                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 options.JsonSerializerOptions.Converters.Add(new UlidToStringJsonConverter());
             });
 
@@ -83,8 +78,6 @@ public sealed class ConfigureWebApi : ConfigurationBase
                 policy.AllowCredentials();
             });
         });
-
-        services.AddSignalR(o => { o.EnableDetailedErrors = IsDevelopment; });
 
         services.AddResponseCaching();
         services.AddResponseCompression(o =>

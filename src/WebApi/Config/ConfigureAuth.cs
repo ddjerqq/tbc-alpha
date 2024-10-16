@@ -1,3 +1,4 @@
+#pragma warning disable CS1591
 using System.ComponentModel;
 using Application;
 using Infrastructure.Services;
@@ -6,11 +7,9 @@ using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace WebApi.Config;
 
-/// <inheritdoc />
 [EditorBrowsable(EditorBrowsableState.Never)]
 public sealed class ConfigureAuth : ConfigurationBase
 {
-    /// <inheritdoc />
     public override void ConfigureServices(IServiceCollection services)
     {
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

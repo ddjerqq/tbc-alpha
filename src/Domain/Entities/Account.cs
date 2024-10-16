@@ -1,31 +1,30 @@
-﻿using Domain.Aggregates;
+﻿using System.Security.Cryptography;
+using Domain.Aggregates;
 using Domain.ValueObjects;
 
 namespace Domain.Entities;
 
-public sealed class Account : Entity<Iban>
+public sealed class Account(Iban id) : Entity<Iban>(id)
 {
-    public Ulid OwnerId { get; set; }
+    public required Ulid OwnerId { get; set; }
+    public required User Owner { get; init; }
 
-    public User Owner { get; init; }
+    public required string Name { get; set; }
+    public required Currency Currency { get; set; }
+    public required Money Balance { get; set; }
 
-    public Currency Currency => Balance.Currency;
-
-    public Money Balance { get; set; }
-
-    // for ef core
-    private Account(Iban iban, Ulid ownerId, User user, Money balance) : base(iban)
+    public static Account CreateNew(User owner, string name, Currency? currency = null)
     {
-        OwnerId = ownerId;
-        Owner = user;
-        Balance = balance;
-    }
+        var iban = Iban.Generate(RandomNumberGenerator.GetInt32(int.MaxValue), Convert.ToInt32(owner.Id.Time.Ticks));
+        currency ??= owner.PreferredCurrency;
 
-    public Account(User owner) : this(
-        Iban.Generate(Constants.BankName, Constants.BankCountryCode, Convert.ToInt32(owner.Id.Random)),
-        owner.Id,
-        owner,
-        new Money(owner.PreferredCurrency, 0))
-    {
+        return new Account(iban)
+        {
+            OwnerId = owner.Id,
+            Owner = owner,
+            Name = name,
+            Currency = currency.Value,
+            Balance = new Money(owner.PreferredCurrency, 0),
+        };
     }
 }

@@ -5,6 +5,7 @@ using Application.Services;
 using Domain.Aggregates;
 using Domain.Common;
 using Domain.Entities;
+using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Interceptors;
 using Persistence.ValueConverters;
@@ -39,13 +40,11 @@ public sealed class AppDbContext(
 
     protected override void ConfigureConventions(ModelConfigurationBuilder builder)
     {
-        builder
-            .Properties<DateTime>()
-            .HaveConversion<DateTimeToUtcDateTimeValueConverter>();
-
-        builder
-            .Properties<Ulid>()
-            .HaveConversion<UlidToStringValueConverter>();
+        builder.Properties<DateTime>().HaveConversion<DateTimeToUtcDateTimeValueConverter>();
+        builder.Properties<Ulid>().HaveConversion<UlidToStringValueConverter>();
+        builder.Properties<Currency>().HaveConversion<CurrencyToStringConverter>();
+        builder.Properties<Money>().HaveConversion<MoneyToStringConverter>();
+        builder.Properties<Iban>().HaveConversion<IbanToStringValueConverter>();
 
         base.ConfigureConventions(builder);
     }

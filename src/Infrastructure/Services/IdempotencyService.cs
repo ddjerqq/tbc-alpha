@@ -1,21 +1,23 @@
 using Application.Services;
+using Microsoft.Extensions.Caching.Memory;
 
 #pragma warning disable CS1591
 #pragma warning disable VSTHRD110
 namespace Infrastructure.Services;
 
-public sealed class IdempotencyService : IIdempotencyService
+public sealed class IdempotencyService(IMemoryCache cache) : IIdempotencyService
 {
     private static readonly TimeSpan InvalidationTime = TimeSpan.FromMinutes(10);
-    private readonly HashSet<Guid> _keys = [];
 
-    public bool ContainsKey(Guid key) => _keys.Contains(key);
+    public bool ContainsKey(Guid key) => cache.TryGetValue(key, out _);
 
     public void AddKey(Guid key)
     {
-        _keys.Add(key);
+        var cacheOptions = new MemoryCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = InvalidationTime,
+        };
 
-        Task.Delay(InvalidationTime)
-            .ContinueWith(_ => _keys.Remove(key), TaskScheduler.Default);
+        cache.Set(key, key, cacheOptions);
     }
 }
