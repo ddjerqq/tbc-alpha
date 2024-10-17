@@ -11,6 +11,8 @@ public sealed class User(Ulid id) : AggregateRoot<Ulid>(id)
     public required DateTime DateOfBirth { get; init; }
     public int Age => DateTime.Now.Year - DateOfBirth.Year;
 
+    public required EmploymentStatus EmploymentStatus { get; init; }
+
     public required AnnualCirculation AnnualCirculation { get; set; }
     public required ICollection<SavingGoal> SavingGoals { get; set; } = [];
 

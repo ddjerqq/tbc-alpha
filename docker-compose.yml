@@ -1,0 +1,12 @@
+﻿services:
+  aiadvisor:
+    image: aiadvisor
+    build:
+      context: .
+      dockerfile: src/AiAdvisor/Dockerfile
+
+  webapplication1:
+    image: webapplication1
+    build:
+      context: .
+      dockerfile: src/WebApplication1/Dockerfile

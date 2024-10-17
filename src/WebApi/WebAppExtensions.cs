@@ -17,14 +17,13 @@ public static class WebAppExt
     private static User GetDefaultUser()
     {
         var userId = Ulid.Parse("01j67mbsgdp53bw4ztm3200xz6");
-        const int userBranch = 4206969;
 
         var user = new User(userId)
         {
-            FullName = "super admin",
+            FullName = "john smith",
             Email = "ddjerqq@gmail.com",
             PasswordHash = BC.EnhancedHashPassword("password"),
-            DateOfBirth = new DateTime(2024, 10, 1),
+            DateOfBirth = new DateTime(2001, 10, 1),
             AnnualCirculation = new AnnualCirculation
             {
                 Income = new Money((Currency)"USD", 100_000),
@@ -32,6 +31,7 @@ public static class WebAppExt
                 Wants = new Money((Currency)"USD", 30_000),
                 Savings = new Money((Currency)"USD", 20_000),
             },
+            EmploymentStatus = new EmploymentStatus.Employed(true),
             CreditUtilization = 10,
             HistoricalSpending = new Money((Currency)"USD", 10_000),
             RiskTolerance = Level.Low,
@@ -40,7 +40,7 @@ public static class WebAppExt
             Accounts = [],
         };
 
-        user.Accounts.Add(new Account(Iban.Generate(userBranch, (int)user.Id.Time.Ticks))
+        user.Accounts.Add(new Account(Iban.Generate(user.Id.Time.Ticks))
         {
             OwnerId = user.Id,
             Owner = user,
@@ -49,7 +49,7 @@ public static class WebAppExt
             Balance = new Money((Currency)"USD", 100_000),
         });
 
-        user.SavingGoals.Add(new SavingGoal(Ulid.Parse("01j67mbsgdp53bw4ztm3200xz6"))
+        user.SavingGoals.Add(new SavingGoal(Ulid.Parse("01j67mbsgdp53bw4ztm3200xy5"))
         {
             OwnerId = user.Id,
             Owner = user,
@@ -59,7 +59,7 @@ public static class WebAppExt
             Level = Level.Low,
         });
 
-        user.SavingGoals.Add(new SavingGoal(Ulid.Parse("01j67mbsgdp53bw4ztm3200xz6"))
+        user.SavingGoals.Add(new SavingGoal(Ulid.Parse("01j67mbsgdp53bw4ztm3200xz3"))
         {
             OwnerId = user.Id,
             Owner = user,

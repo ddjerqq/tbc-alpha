@@ -1,0 +1,31 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Tbc.Protos";
+
+package AiAdvisor;
+
+service AiAdvisor {
+  rpc GetFinancialAdvice (UserData) returns (FinancialAdvice);
+}
+
+message UserData {
+  string user_id = 1;
+}
+
+
+message Test {
+  optional int32 test = 1;
+  map<string, string> metadata = 2;
+  repeated int32 favNumbers = 3;
+}
+
+message ContactInfo {
+  string name = 1;
+
+  oneof contact_method {
+    string email = 2;
+    string phone = 3;
+    string address = 4;
+  }
+}
+

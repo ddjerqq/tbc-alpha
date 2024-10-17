@@ -15,7 +15,8 @@ public sealed class Account(Iban id) : Entity<Iban>(id)
 
     public static Account CreateNew(User owner, string name, Currency? currency = null)
     {
-        var iban = Iban.Generate(RandomNumberGenerator.GetInt32(int.MaxValue), Convert.ToInt32(owner.Id.Time.Ticks));
+        // TODO fix this
+        var iban = Iban.Generate(Convert.ToInt32(owner.Id.Time.Ticks));
         currency ??= owner.PreferredCurrency;
 
         return new Account(iban)
