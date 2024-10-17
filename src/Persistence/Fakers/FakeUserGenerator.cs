@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using Domain.Aggregates;
+using Domain.Entities;
 using Domain.ValueObjects;
 
 namespace Persistence.Fakers;
@@ -52,6 +53,18 @@ public sealed class FakeUserGenerator : FakeEntityBuilderBase<User, Ulid>
 
                 return default!;
             })
+            .StrictMode(true);
+    }
+}
+
+public sealed class FakeAccountGenerator : FakeEntityBuilderBase<Account, Iban>
+{
+    public FakeAccountGenerator(Faker<User> userFaker)
+    {
+        Faker
+            .RuleFor(x => x.OwnerId, f => userFaker.Generate().Id)
+            .RuleFor(x => x.Name, f => f.Random.Double() < 0.8 ? "Checking" : "Savings")
+            .RuleFor(x => x.Balance, f => f.Finance.Amount(2000, 20000))
             .StrictMode(true);
     }
 }
