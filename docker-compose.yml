@@ -3,7 +3,7 @@
     image: aiadvisor
     build:
       context: .
-      dockerfile: src/AiAdvisor/Dockerfile
+      dockerfile: src/ModelsAI/Dockerfile
 
   webapplication1:
     image: webapplication1
