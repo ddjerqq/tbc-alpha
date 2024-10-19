@@ -1,4 +1,5 @@
 using Application.Economy.Commands;
+using Application.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Controllers;
@@ -22,5 +23,18 @@ public class EconomyController(ILogger<ApiController> logger, IMediator mediator
         }
 
         return BadRequest("Failed");
+    }
+
+    [HttpPost("send")]
+    public async Task<ActionResult> GetTransactions(GetTransactions transactions, CancellationToken ct)
+
+    {
+        var resp = await mediator.Send(transactions, ct);
+        if (resp.Count == 0)
+        {
+            return BadRequest("Failed");
+        }
+
+        return Ok(resp);
     }
 }
