@@ -4,27 +4,28 @@ option csharp_namespace = "Infrastructure";
 
 package AiAdvisor;
 
-service AiAdvisor {
-  rpc GetFinancialAdvice (GetFinancialAdviceForAccountRequest) returns (FinancialAdviceResponse);
-}
-
-message FinancialAdviceResponse {
-  string message = 1;
-}
-
 message GetFinancialAdviceForAccountRequest {
   double balance = 1;
+  repeated Transaction transactions = 2;
+  repeated Goal goals = 3;
 
   message Transaction {
     double amount = 1;
     string category = 2;
   }
-  repeated Transaction transactions = 2;
 
   message Goal {
     string category = 1;
     double amount_saved = 2;
     double total = 3;
   }
-  repeated Goal goals = 3;
+
+}
+
+message FinancialAdviceResponse {
+  string message = 1;
+}
+
+service AiAdvisor {
+  rpc GetFinancialAdvice (GetFinancialAdviceForAccountRequest) returns (FinancialAdviceResponse);
 }
