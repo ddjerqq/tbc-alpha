@@ -5,21 +5,20 @@ public abstract record EmploymentStatus(bool IsStudent)
     public sealed record Unemployed(bool IsStudent) : EmploymentStatus(IsStudent);
     public sealed record Employed(bool IsStudent) : EmploymentStatus(IsStudent);
     public sealed record SelfEmployed(bool IsStudent) : EmploymentStatus(IsStudent);
-
     public sealed record Retired() : EmploymentStatus(false);
 
-    public override string ToString()
+    public static implicit operator string(EmploymentStatus employmentStatus)
     {
-        var predicate = (bool isStudent) => isStudent ? "student" : "non-student";
-
-        return this switch
+        var status = employmentStatus switch
         {
-            Unemployed { IsStudent: var student } => $"unemployed {predicate(student)}",
-            Employed { IsStudent: var student } => $"employed {predicate(student)}",
-            SelfEmployed { IsStudent: var student } => $"self-employed {predicate(student)}",
+            Unemployed => "unemployed",
+            Employed => "employed",
+            SelfEmployed => "self-employed",
             Retired => "retired",
-            _ => throw new InvalidOperationException("Invalid employment status."),
+            _ => throw new ArgumentException("Invalid employment status."),
         };
+
+        return status + (employmentStatus.IsStudent ? " student" : string.Empty);
     }
 
     public static EmploymentStatus Parse(string value)

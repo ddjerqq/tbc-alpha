@@ -6,12 +6,12 @@ public readonly record struct Iban(string CountryCode, string BankIdentifier, lo
 {
     public static Iban Generate(string countryCode, string bankIdentifier, long accountNumber)
     {
-        var accountNumberStr = accountNumber
-            .ToString()
-            .PadLeft(10, '0');
+        // 16 digit number
+        if (accountNumber is < 1000000000000000 or > 9999999999999999)
+            throw new ArgumentOutOfRangeException(nameof(accountNumber), "Account number must be a 16 digit number.");
 
         var bankIdentifierStr = string.Concat(bankIdentifier.Select(c => (c - 'A' + 10).ToString()));
-        var bban = $"{bankIdentifierStr}{accountNumberStr}";
+        var bban = $"{bankIdentifierStr}{accountNumber}";
 
         var numericCountryCode = string.Concat(countryCode.Select(c => (c - 'A' + 10).ToString()));
         var ibanForCheck = $"{bban}{numericCountryCode}00";
@@ -24,7 +24,7 @@ public readonly record struct Iban(string CountryCode, string BankIdentifier, lo
 
     public static Iban Generate(long accountNumber) => Generate(Constants.BankCountryCode, Constants.BankName, accountNumber);
 
-    public override string ToString() => $"{CountryCode}{CheckDigits:D2}{BankIdentifier}{AccountNumber:D10}";
+    public override string ToString() => $"{CountryCode}{CheckDigits:D2}{BankIdentifier}{AccountNumber:D16}";
 
     public static Iban Parse(string ibanString)
     {

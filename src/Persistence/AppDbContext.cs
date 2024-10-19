@@ -45,7 +45,6 @@ public sealed class AppDbContext(
         builder.Properties<Currency>().HaveConversion<CurrencyToStringConverter>();
         builder.Properties<Money>().HaveConversion<MoneyToStringConverter>();
         builder.Properties<Iban>().HaveConversion<IbanToStringValueConverter>();
-        builder.Properties<EmploymentStatus>().HaveConversion<EmploymentStatusToStringValueConverter>();
 
         base.ConfigureConventions(builder);
     }

@@ -47,7 +47,7 @@ public sealed class EntitySaveChangesInterceptor : SaveChangesInterceptor
             var entity = (ITrackedEntity)entry.Entity;
 
             if (entry.State is EntityState.Added or EntityState.Modified or EntityState.Deleted)
-                Log.Logger.Information("{UserId} {EntryState} entity {@Entity}", currentUserId, entry.State, entry.Entity);
+                Log.Logger.Information("{UserId} {EntryState} entity with id {Entity}", currentUserId, entry.State, ((dynamic)entry.Entity).Id);
 
             if (entry.State == EntityState.Added)
             {

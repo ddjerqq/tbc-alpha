@@ -14,9 +14,9 @@ public sealed class User(Ulid id) : AggregateRoot<Ulid>(id)
 
     public required EmploymentStatus EmploymentStatus { get; init; }
 
-    public required ICollection<SavingGoal> SavingGoals { get; set; } = [];
+    public required ICollection<SavingGoal> SavingGoals { get; init; } = [];
 
-    public required Currency PreferredCurrency { get; set; }
+    public required Currency PreferredCurrency { get; init; }
 
     public required ICollection<Account> Accounts { get; init; } = [];
 }

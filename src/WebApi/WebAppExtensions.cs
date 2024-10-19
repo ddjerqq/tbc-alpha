@@ -4,6 +4,7 @@ using Domain.ValueObjects;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Persistence.Fakers;
 using Serilog;
 using WebApi.Middleware;
 
@@ -14,57 +15,6 @@ namespace WebApi;
 /// </summary>
 public static class WebAppExt
 {
-    private static User GetDefaultUser()
-    {
-        var userId = Ulid.Parse("01j67mbsgdp53bw4ztm3200xz6");
-
-        var user = new User(userId)
-        {
-            FullName = "john smith",
-            Email = "ddjerqq@gmail.com",
-            PasswordHash = BC.EnhancedHashPassword("password"),
-            DateOfBirth = new DateTime(2001, 10, 1),
-            EmploymentStatus = new EmploymentStatus.Employed(true),
-            PreferredCurrency = (Currency)"USD",
-            SavingGoals = [],
-            Accounts = [],
-        };
-
-        user.Accounts.Add(new Account(Iban.Generate(user.Id.Time.Ticks))
-        {
-            OwnerId = user.Id,
-            Owner = user,
-            Name = "master",
-            Currency = (Currency)"USD",
-            Balance = new Money((Currency)"USD", 100_000),
-            Transactions = [],
-        });
-
-        user.SavingGoals.Add(new SavingGoal(Ulid.Parse("01j67mbsgdp53bw4ztm3200xy5"))
-        {
-            OwnerId = user.Id,
-            Owner = user,
-            Name = "Vacation",
-            AmountSaved = new Money((Currency)"USD", 3_000),
-            Total = new Money((Currency)"USD", 10_000),
-            Years = 1,
-            Level = Level.Low,
-        });
-
-        user.SavingGoals.Add(new SavingGoal(Ulid.Parse("01j67mbsgdp53bw4ztm3200xz3"))
-        {
-            OwnerId = user.Id,
-            Owner = user,
-            Name = "Emergency",
-            AmountSaved = new Money((Currency)"USD", 12_000),
-            Total = new Money((Currency)"USD", 30_000),
-            Years = 4,
-            Level = Level.High,
-        });
-
-        return user;
-    }
-
     /// <summary>
     /// Apply any pending migrations to the database if any.
     /// </summary>
@@ -79,16 +29,22 @@ public static class WebAppExt
             await dbContext.Database.MigrateAsync();
         }
 
-        var defaultUser = GetDefaultUser();
-        if (await dbContext.Users.FindAsync(defaultUser.Id) is null)
+        if (!await dbContext.Users.AnyAsync())
         {
-            Log.Information("adding default user");
-            dbContext.Users.Add(defaultUser);
+            Log.Information("seeding data");
+
+            var faker = new FakeUserGenerator();
+            var users = faker.Generate(50).ToList();
+            FakeUserGenerator.PopulateAccountTransactions(users);
+
+            await dbContext.Users.AddRangeAsync(users);
         }
 
-        Log.Information("All migrations applied");
+        Log.Information("saving changes");
 
         await dbContext.SaveChangesAsync();
+
+        Log.Information("All migrations applied");
     }
 
     /// <summary>

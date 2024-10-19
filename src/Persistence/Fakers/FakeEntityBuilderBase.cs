@@ -9,8 +9,6 @@ public abstract class FakeEntityBuilderBase<TEntity, TId>
     where TId : struct, IEquatable<TId>
 {
     protected readonly Faker<TEntity> Faker = new Faker<TEntity>()
-        .CustomInstantiator(_ => (TEntity)typeof(TEntity).GetConstructor([typeof(TId)])?.Invoke([typeof(TId).GetStaticMethod("New").Invoke(null, null)])!)
-        .RuleFor(x => x.Id, _ => typeof(TId).GetStaticMethod("New").Invoke(null, null))
         .RuleFor(x => x.Created, f => f.Date.Between(DateTime.UtcNow.AddYears(-1), DateTime.UtcNow.AddMonths(-2)))
         .RuleFor(x => x.CreatedBy, "test")
         .RuleFor(x => x.LastModified, (DateTime?)null)
@@ -18,5 +16,5 @@ public abstract class FakeEntityBuilderBase<TEntity, TId>
         .RuleFor(x => x.Deleted, (DateTime?)null)
         .RuleFor(x => x.DeletedBy, default(string));
 
-    public IEnumerable<TEntity> Generate(int count) => Faker.GenerateLazy(count);
+    public IEnumerable<TEntity> Generate(int count) => Faker.Generate(count);
 }

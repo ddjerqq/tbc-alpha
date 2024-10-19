@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using Domain.Aggregates;
+﻿using Domain.Aggregates;
 using Domain.ValueObjects;
 
 namespace Domain.Entities;
@@ -9,25 +8,13 @@ public sealed class Account(Iban id) : Entity<Iban>(id)
     public required Ulid OwnerId { get; init; }
     public required User Owner { get; init; }
 
-    public required string Name { get; set; }
-    public required Currency Currency { get; set; }
-    public required Money Balance { get; set; }
+    public required string Name { get; init; }
+    public required Currency Currency { get; init; }
 
-    public required ICollection<TransactionParticipant> Transactions { get; init; } = [];
+    public Money Balance => Transactions
+        .Aggregate(new Money(Currency, 0), (acc, x) => x.IsSender
+            ? acc.Subtract(x.Transaction.Amount)
+            : acc.Add(x.Transaction.Amount));
 
-    public static Account CreateNew(User owner, string name, Currency? currency = null)
-    {
-        var iban = Iban.Generate(RandomNumberGenerator.GetInt32(int.MaxValue));
-        currency ??= owner.PreferredCurrency;
-
-        return new Account(iban)
-        {
-            OwnerId = owner.Id,
-            Owner = owner,
-            Name = name,
-            Currency = currency.Value,
-            Balance = new Money(owner.PreferredCurrency, 0),
-            Transactions = [],
-        };
-    }
+    public required List<TransactionParticipant> Transactions { get; init; } = [];
 }

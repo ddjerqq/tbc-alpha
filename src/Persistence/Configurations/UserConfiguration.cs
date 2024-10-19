@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using Domain.Aggregates;
+using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,6 +14,11 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.FullName).HasMaxLength(32);
         builder.Property(x => x.Email).HasMaxLength(64);
         builder.Property(x => x.PasswordHash).HasMaxLength(64);
+
+        builder.Property(x => x.EmploymentStatus)
+            .HasConversion<string>(
+                to => to,
+                from => EmploymentStatus.Parse(from));
 
         builder.HasMany(user => user.SavingGoals)
             .WithOne(savingGoal => savingGoal.Owner)
