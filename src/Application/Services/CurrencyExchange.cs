@@ -32,6 +32,8 @@ public class CurrencyService(HttpClient client, IMemoryCache cache) : ICurrencyE
 
     public async Task<Money> ConvertToAsync(Money money, Currency currency)
     {
+        if (money.Currency == currency) return money;
+        
         var data = await GetCurrencyExchange();
         decimal rateFrom = Convert.ToDecimal(data.Rates[money.Currency]);
         decimal rateTo = Convert.ToDecimal(data.Rates[currency]);
