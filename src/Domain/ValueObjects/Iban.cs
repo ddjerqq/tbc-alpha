@@ -34,7 +34,7 @@ public readonly record struct Iban(string CountryCode, string BankIdentifier, lo
         var countryCode = ibanString[..2];
         var checkDigits = int.Parse(ibanString[2..4]);
         var bankIdentifier = ibanString[4..12];
-        var accountNumber = int.Parse(ibanString[12..]);
+        var accountNumber = long.Parse(ibanString[12..]);
 
         return new Iban(countryCode, bankIdentifier, accountNumber, checkDigits);
     }

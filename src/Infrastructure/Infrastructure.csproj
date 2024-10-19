@@ -9,6 +9,12 @@
     <ItemGroup>
         <PackageReference Include="CsvHelper.Excel.Core" Version="27.2.1"/>
         <PackageReference Include="Destructurama.Attributed" Version="4.0.0"/>
+        <PackageReference Include="Google.Protobuf" Version="3.28.2" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.66.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.67.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Analyzers" Version="8.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0"/>
@@ -33,6 +39,10 @@
         <PackageReference Include="Serilog.Sinks.File" Version="6.0.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <Protobuf Include="../Protos/ai_advisor.proto" GrpcServices="Client" />
+    </ItemGroup>
+    
     <ItemGroup>
         <ProjectReference Include="..\Application\Application.csproj"/>
         <ProjectReference Include="..\Domain\Domain.csproj"/>
