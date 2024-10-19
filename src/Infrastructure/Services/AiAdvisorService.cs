@@ -9,7 +9,6 @@ namespace Infrastructure.Services;
 public sealed class AiAdvisorService
 {
     private readonly AiAdvisor.AiAdvisorClient _client;
-
     public AiAdvisorService()
     {
         var channel = GrpcChannel.ForAddress("http://localhost:5001");
@@ -25,9 +24,11 @@ public sealed class AiAdvisorService
             Balance = (double)account.Balance.Amount,
             Transactions =
             {
-                account.Transactions.Select(tx => new grpc.Transaction
+                account.Transactions
+                    .Where(tx => tx.Transaction.Date.Year == DateTime.Now.Year && tx.Transaction.Date.Month == DateTime.Now.Month - 1)
+                    .Select(tx => new grpc.Transaction
                 {
-                    Amount = (double)tx.Transaction.Amount.Amount,
+                    Amount = tx.IsSender ? -(double)tx.Transaction.Amount.Amount : (double)tx.Transaction.Amount.Amount,
                     Category = tx.Transaction.TransactionCategory.ToString(),
                 }).ToList(),
             },

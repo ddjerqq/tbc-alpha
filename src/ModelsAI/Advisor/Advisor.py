@@ -2,22 +2,19 @@ import grpc
 from concurrent import futures
 from ai_advisor_pb2 import GetFinancialAdviceForAccountRequest, FinancialAdviceResponse
 from ai_advisor_pb2_grpc import AiAdvisorServicer, add_AiAdvisorServicer_to_server
-from src.ModelsAI.Advisor.FinancialAdvisorClass import FinancialAdvisor
+from FinancialAdvisorClass import FinancialAdvisor
 
 
 class AiAdvisorService(AiAdvisorServicer):
     def GetFinancialAdvice(self, request: GetFinancialAdviceForAccountRequest, context):
         # Example: Use FinancialAdvisor to generate advice based on user data
-        # advisor = FinancialAdvisor(request.balance, request.transactions, request.goals)
-        # response_message = advisor.provide_financial_advice()
-
         balance: float = request.balance
         goals: list[(str, float, float)] = [(i.category, i.amount_saved, i.total) for i in request.goals]
-        transactions: list[(str, float)] = [(i.category, i.amount) for i in request.transactions]
+        transactions: list[(float, str)] = [(i.amount, i.category) for i in request.transactions]
 
-        # Create a FinancialAdviceResponse and populate it with the advice
+        advisor = FinancialAdvisor(balance, transactions, goals)
         response = FinancialAdviceResponse()
-        response.message = "hello"  # Example static message; replace with dynamic response logic
+        response.message = advisor.provide_financial_advice()
         return response
 
 
