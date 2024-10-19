@@ -9,10 +9,10 @@ namespace WebAPI.Controllers.v1;
 /// 
 /// </summary>
 /// <param name="mediator"></param>
-public class EconomyController(ILogger<ApiController> logger,IMediator mediator) : ApiController(logger)
+public class EconomyController(ILogger<ApiController> logger, IMediator mediator) : ApiController(logger)
 {
     [HttpPost("send")]
-    public async Task<ActionResult> Send([FromBody] BalanceTransactionCommand command, CancellationToken ct)
+    public async Task<ActionResult> Send([FromBody] SendToUserCommand command, CancellationToken ct)
 
     {
         var resp = await mediator.Send(command, ct);
@@ -20,8 +20,7 @@ public class EconomyController(ILogger<ApiController> logger,IMediator mediator)
         {
             return Ok("Success");
         }
-        return Unauthorized("INVALID"); ;
 
+        return BadRequest("Failed");
     }
-
 }

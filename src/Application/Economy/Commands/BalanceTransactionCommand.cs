@@ -5,9 +5,9 @@ using MediatR;
 
 namespace Application.Economy.Commands;
 
-public sealed record BalanceTransactionCommand(Account Sender, Account Receiver, Money Amount) : IRequest<bool>;
+internal sealed record BalanceTransactionCommand(Account Sender, Account Receiver, Money Amount) : IRequest<bool>;
 
-public sealed class BalanceTransactionCommandHandler(IAppDbContext dbContext, ICurrencyExchange currencyExchange)
+internal sealed class BalanceTransactionCommandHandler(IAppDbContext dbContext, ICurrencyExchange currencyExchange)
     : IRequestHandler<BalanceTransactionCommand, bool>
 {
     public async Task<bool> Handle(BalanceTransactionCommand request, CancellationToken ct)
