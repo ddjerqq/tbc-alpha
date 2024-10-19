@@ -60,6 +60,8 @@ var client = new AiAdvisorService();
 var user = await db.Users
     .Include(user => user.SavingGoals)
     .Include(user => user.Accounts)
+    .ThenInclude(account => account.Transactions)
+    .ThenInclude(transaction => transaction.Transaction)
     .FirstAsync();
 
 var accountNumber = user.Accounts.First().Id;
