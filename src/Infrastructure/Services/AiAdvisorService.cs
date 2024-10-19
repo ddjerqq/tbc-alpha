@@ -20,30 +20,26 @@ public sealed class AiAdvisorService
     {
         var account = user.Accounts.First(account => account.Id == accountId);
 
-        var transactions = new RepeatedField<grpc.Transaction>
-        {
-            account.Transactions.Select(tx => new grpc.Transaction
-            {
-                Amount = (double)tx.Transaction.Amount.Amount,
-                Category = tx.Transaction.TransactionCategory.ToString(),
-            }),
-        };
-
-        var goals = new RepeatedField<grpc.Goal>
-        {
-            user.SavingGoals.Select(goal => new grpc.Goal
-            {
-                Category = goal.Type,
-                AmountSaved = (double)goal.AmountSaved.Amount,
-                Total = (double)goal.Total.Amount,
-            }),
-        };
-
         var request = new GetFinancialAdviceForAccountRequest
         {
             Balance = (double)account.Balance.Amount,
-            Transactions = { transactions },
-            Goals = { goals },
+            Transactions =
+            {
+                account.Transactions.Select(tx => new grpc.Transaction
+                {
+                    Amount = (double)tx.Transaction.Amount.Amount,
+                    Category = tx.Transaction.TransactionCategory.ToString(),
+                }).ToList(),
+            },
+            Goals =
+            {
+                user.SavingGoals.Select(goal => new grpc.Goal
+                {
+                    Category = goal.Type,
+                    AmountSaved = (double)goal.AmountSaved.Amount,
+                    Total = (double)goal.Total.Amount,
+                }).ToList(),
+            },
         };
 
         var response = await _client.GetFinancialAdviceAsync(request, cancellationToken: ct);
