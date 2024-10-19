@@ -7,7 +7,7 @@ namespace Application.Services;
 
 public sealed record CurrencyResponse(Dictionary<Currency, Currency> Rates);
 
-public class CurrencyService(HttpClient client, IMemoryCache cache) : ICurrencyExchange
+public sealed class CurrencyService(HttpClient client, IMemoryCache cache) : ICurrencyExchange
 {
     private static readonly string Uri =
         $"https://api.currencyfreaks.com/v2.0/rates/latest?" +
