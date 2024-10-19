@@ -1,18 +1,17 @@
 import grpc
 from concurrent import futures
-import ai_advisor_pb2
+from ai_advisor_pb2 import GetFinancialAdviceForAccountRequest, FinancialAdviceResponse
 from ai_advisor_pb2_grpc import AiAdvisorServicer, add_AiAdvisorServicer_to_server
 from src.ModelsAI.Advisor.FinancialAdvisorClass import FinancialAdvisor
 
 
 class AiAdvisorService(AiAdvisorServicer):
-    def GetFinancialAdvice(self, request, context):
-        # Here, implement the logic to generate financial advice
-        # You have access to UserData with goals and transactions data
+    def GetFinancialAdvice(self, request: AiAdvisorServicer, context):
+        # advisor = FinancialAdvisor(request.balance, request.transactions, request.goals)
+        # response = advisor.provide_financial_advice()
 
-        # Example: Constructing FinancialAdvice response
-        advisor = FinancialAdvisor(request.balance, request.transaction_data, request.goals_data)
-        response = advisor.provide_financial_advice()
+        response = FinancialAdviceResponse()
+        response.message = "hello"
         return response
 
 
@@ -21,7 +20,7 @@ def serve():
     add_AiAdvisorServicer_to_server(AiAdvisorService(), server)
 
     print("Server starting on port 5001...")
-    server.add_insecure_port('[::]:5001')
+    server.add_insecure_port('localhost:5001')
     server.start()
     server.wait_for_termination()
 
