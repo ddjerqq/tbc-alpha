@@ -1,10 +1,12 @@
 import grpc
 from concurrent import futures
-import FinancialAdvisor
-import FinancialAdvisor_grpc
+import ai_advisor_pb2
+from ai_advisor_pb2_grpc import AiAdvisorServicer, add_AiAdvisorServicer_to_server
+from src.ModelsAI.Advisor.FinancialAdvisorClass import FinancialAdvisor
 
-class AiAdvisorService(FinancialAdvisor_grpc.AiAdvisorServicer):
-    def GetFinancialAdvice(self, request):
+
+class AiAdvisorService(AiAdvisorServicer):
+    def GetFinancialAdvice(self, request, context):
         # Here, implement the logic to generate financial advice
         # You have access to UserData with goals and transactions data
 
@@ -16,7 +18,7 @@ class AiAdvisorService(FinancialAdvisor_grpc.AiAdvisorServicer):
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    FinancialAdvisor_grpc.add_AiAdvisorServicer_to_server(AiAdvisorService(), server)
+    add_AiAdvisorServicer_to_server(AiAdvisorService(), server)
 
     print("Server starting on port 50052...")
     server.add_insecure_port('[::]:50052')
