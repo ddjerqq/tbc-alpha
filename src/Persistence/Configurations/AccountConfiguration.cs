@@ -12,6 +12,11 @@ internal sealed class AccountConfiguration : IEntityTypeConfiguration<Account>
             .WithMany(user => user.Accounts)
             .HasForeignKey(account => account.OwnerId);
 
+        builder.HasMany(account => account.Transactions)
+            .WithOne(accountTransaction => accountTransaction.Account)
+            .HasForeignKey(accountTransaction => accountTransaction.AccountId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         builder.Property(x => x.Name).HasMaxLength(32);
     }
 }

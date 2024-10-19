@@ -1,4 +1,3 @@
-using System.Globalization;
 using Application;
 using dotenv.net;
 using FluentValidation;

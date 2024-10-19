@@ -24,17 +24,7 @@ public static class WebAppExt
             Email = "ddjerqq@gmail.com",
             PasswordHash = BC.EnhancedHashPassword("password"),
             DateOfBirth = new DateTime(2001, 10, 1),
-            AnnualCirculation = new AnnualCirculation
-            {
-                Income = new Money((Currency)"USD", 100_000),
-                Needs = new Money((Currency)"USD", 50_000),
-                Wants = new Money((Currency)"USD", 30_000),
-                Savings = new Money((Currency)"USD", 20_000),
-            },
             EmploymentStatus = new EmploymentStatus.Employed(true),
-            CreditUtilization = 10,
-            HistoricalSpending = new Money((Currency)"USD", 10_000),
-            RiskTolerance = Level.Low,
             PreferredCurrency = (Currency)"USD",
             SavingGoals = [],
             Accounts = [],
@@ -47,6 +37,7 @@ public static class WebAppExt
             Name = "master",
             Currency = (Currency)"USD",
             Balance = new Money((Currency)"USD", 100_000),
+            Transactions = [],
         });
 
         user.SavingGoals.Add(new SavingGoal(Ulid.Parse("01j67mbsgdp53bw4ztm3200xy5"))
@@ -54,7 +45,8 @@ public static class WebAppExt
             OwnerId = user.Id,
             Owner = user,
             Name = "Vacation",
-            Value = new Money((Currency)"USD", 10_000),
+            AmountSaved = new Money((Currency)"USD", 3_000),
+            Total = new Money((Currency)"USD", 10_000),
             Years = 1,
             Level = Level.Low,
         });
@@ -64,7 +56,8 @@ public static class WebAppExt
             OwnerId = user.Id,
             Owner = user,
             Name = "Emergency",
-            Value = new Money((Currency)"USD", 30_000),
+            AmountSaved = new Money((Currency)"USD", 12_000),
+            Total = new Money((Currency)"USD", 30_000),
             Years = 4,
             Level = Level.High,
         });

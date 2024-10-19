@@ -3,9 +3,7 @@
 public abstract record EmploymentStatus(bool IsStudent)
 {
     public sealed record Unemployed(bool IsStudent) : EmploymentStatus(IsStudent);
-
     public sealed record Employed(bool IsStudent) : EmploymentStatus(IsStudent);
-
     public sealed record SelfEmployed(bool IsStudent) : EmploymentStatus(IsStudent);
 
     public sealed record Retired() : EmploymentStatus(false);

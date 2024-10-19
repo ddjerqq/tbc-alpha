@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using Domain.Aggregates;
-using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,14 +13,6 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.FullName).HasMaxLength(32);
         builder.Property(x => x.Email).HasMaxLength(64);
         builder.Property(x => x.PasswordHash).HasMaxLength(64);
-
-        builder.ComplexProperty(x => x.AnnualCirculation, annualCirculationBuilder =>
-        {
-            annualCirculationBuilder.Property(x => x.Income).HasColumnName("annual_income");
-            annualCirculationBuilder.Property(x => x.Needs).HasColumnName("annual_needs");
-            annualCirculationBuilder.Property(x => x.Wants).HasColumnName("annual_wants");
-            annualCirculationBuilder.Property(x => x.Savings).HasColumnName("annual_savings");
-        });
 
         builder.HasMany(user => user.SavingGoals)
             .WithOne(savingGoal => savingGoal.Owner)
