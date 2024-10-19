@@ -20,8 +20,8 @@ def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     add_AiAdvisorServicer_to_server(AiAdvisorService(), server)
 
-    print("Server starting on port 50052...")
-    server.add_insecure_port('[::]:50052')
+    print("Server starting on port 5001...")
+    server.add_insecure_port('[::]:5001')
     server.start()
     server.wait_for_termination()
 
