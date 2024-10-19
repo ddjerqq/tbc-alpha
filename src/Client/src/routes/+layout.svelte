@@ -1,53 +1,22 @@
 <script>
-	import Header from './Header.svelte';
-	import '../app.min.css';
+  import Icon from "heroicons-for-svelte";
+  import {Home, SwitchHorizontal, User} from "heroicons-for-svelte/icons/outline";
 </script>
 
-<div class="app">
-	<Header />
+<div class="w-full h-full flex flex-col justify-between">
+    <slot></slot>
 
-	<main>
-		<slot />
-	</main>
+    <footer class="w-full bg-gray-300 flex justify-around items-center align-middle p-3">
+        <a href="/" class="bg-gray-400 p-3 rounded-md">
+            <Icon icon={Home} class="text-2xl"/>
+        </a>
 
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+        <a href="/" class="bg-gray-400 p-3 rounded-md">
+            <Icon icon={SwitchHorizontal} class="text-2xl"/>
+        </a>
+
+        <a href="/" class="bg-gray-400 p-3 rounded-md">
+            <Icon icon={User} class="text-2xl"/>
+        </a>
+    </footer>
 </div>
-
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>
