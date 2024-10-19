@@ -12,6 +12,6 @@ internal sealed class SavingGoalConfiguration : IEntityTypeConfiguration<SavingG
             .WithMany(user => user.SavingGoals)
             .HasForeignKey(savingGoal => savingGoal.OwnerId);
 
-        builder.Property(x => x.Name).HasMaxLength(32);
+        builder.Property(x => x.Type).HasMaxLength(32);
     }
 }

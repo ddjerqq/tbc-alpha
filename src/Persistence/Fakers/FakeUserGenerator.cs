@@ -63,7 +63,7 @@ public sealed class FakeUserGenerator : FakeEntityBuilderBase<User, Ulid>
             })
             .RuleFor(x => x.SavingGoals, (f, user) =>
             {
-                List<string> types = ["car", "vacation", "education", "home", "emergency"];
+                List<string> types = ["car", "vacation", "education", "home", "emergency_fund"];
 
                 var amountOfGoals = f.Random.Int(0, 5);
                 return Enumerable.Range(0, amountOfGoals)
@@ -81,7 +81,7 @@ public sealed class FakeUserGenerator : FakeEntityBuilderBase<User, Ulid>
                         {
                             OwnerId = user.Id,
                             Owner = user,
-                            Name = type,
+                            Type = type,
                             AmountSaved = new Money((Currency)"USD", amountSaved),
                             Total = new Money((Currency)"USD", goalAmount),
                             Years = f.Random.Int(1, 5),

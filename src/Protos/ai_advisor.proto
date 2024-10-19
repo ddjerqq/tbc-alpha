@@ -5,24 +5,26 @@ option csharp_namespace = "Tbc.Protos";
 package AiAdvisor;
 
 service AiAdvisor {
-  rpc GetFinancialAdvice (request) returns (FinancialAdvice);
+  rpc GetFinancialAdvice (GetFinancialAdviceForAccountRequest) returns (FinancialAdviceResponse);
 }
 
-message request {
+message FinancialAdviceResponse {
+  string message = 1;
+}
+
+message GetFinancialAdviceForAccountRequest {
   int32 balance = 1;
+
+  message Transaction {
+    double amount = 1;
+    string category = 2;
+  }
   repeated Transaction transactions = 2;
+
+  message Goal {
+    string category = 1;
+    double amount_saved = 2;
+    double total = 3;
+  }
   repeated Goal goals = 3;
 }
-
-message Transaction {
-  float amount = 1;
-  string category = 2;
-}
-
-message Goal {
-  string category = 1;
-  float amount_saved = 2;
-  float total = 3;
-}
-
-
