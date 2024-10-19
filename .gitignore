@@ -23,3 +23,6 @@
 **/values.dev.yaml
 **/*.log
 **/*.DotSettings.User
+
+src/Client/.svelte-kit
+src/Client/node_modules
