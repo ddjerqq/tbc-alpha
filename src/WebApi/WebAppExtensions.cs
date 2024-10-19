@@ -56,6 +56,8 @@ public static class WebAppExt
 
         if (app.Environment.IsDevelopment())
         {
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseMigrationsEndPoint();
         }
         else
@@ -78,7 +80,11 @@ public static class WebAppExt
         app.UseRateLimiter();
         app.UseRequestLocalization();
 
-        app.UseCors();
+        app.UseCors(o => o
+            .WithOrigins("http://localhost:2080", "https://localhost:2443")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+
         app.UseAuthentication();
         app.UseAuthorization();
         app.UseAntiforgery();
@@ -86,15 +92,9 @@ public static class WebAppExt
 
         app.MapAppHealthChecks();
         app.MapControllers();
+        app.MapSwagger();
 
         app.MapDefaultControllerRoute();
-
-        app.MapFallback(httpContext =>
-        {
-            httpContext.Response.StatusCode = StatusCodes.Status302Found;
-            httpContext.Response.Redirect("/404");
-            return Task.CompletedTask;
-        });
     }
 
     private static void UseCustomHeaderMiddleware(this WebApplication app)

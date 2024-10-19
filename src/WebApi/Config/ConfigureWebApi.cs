@@ -79,6 +79,8 @@ public sealed class ConfigureWebApi : ConfigurationBase
             });
         });
 
+        services.AddSwaggerGen();
+
         services.AddResponseCaching();
         services.AddResponseCompression(o =>
         {

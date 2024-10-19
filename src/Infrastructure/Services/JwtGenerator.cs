@@ -17,22 +17,6 @@ public sealed class JwtGenerator : IJwtGenerator
 
     public static readonly JwtBearerEvents Events = new()
     {
-        OnChallenge = ctx =>
-        {
-            ctx.Response.StatusCode = (int)HttpStatusCode.Found;
-            ctx.Response.Redirect("/login");
-            ctx.HandleResponse();
-            return Task.CompletedTask;
-        },
-
-        OnForbidden = ctx =>
-        {
-            ctx.Response.StatusCode = (int)HttpStatusCode.NotFound;
-            ctx.Response.Redirect("/404");
-            ctx.Fail("the requested resource could not be found");
-            return Task.CompletedTask;
-        },
-
         OnMessageReceived = ctx =>
         {
             ctx.Request.Query.TryGetValue("authorization", out var query);

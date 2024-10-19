@@ -1,6 +1,9 @@
 ﻿using Application.Auth;
+using Application.Services;
 using Domain.Aggregates;
+using Domain.ValueObjects;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.V1;
@@ -8,7 +11,8 @@ namespace WebApi.Controllers.V1;
 /// <summary>
 /// Controller for authentication actions
 /// </summary>
-public sealed class AuthController(ILogger<ApiController> logger, IMediator mediator) : ApiController(logger)
+[Authorize]
+public sealed class AuthController(ILogger<ApiController> logger, IAppDbContext dbContext, IMediator mediator) : ApiController(logger)
 {
     /// <summary>
     /// Gets the user's claims
@@ -19,6 +23,7 @@ public sealed class AuthController(ILogger<ApiController> logger, IMediator medi
     /// <summary>
     /// Logs the user in
     /// </summary>
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<ActionResult<User>> Login(LoginCommand command, CancellationToken ct)
     {
@@ -36,5 +41,30 @@ public sealed class AuthController(ILogger<ApiController> logger, IMediator medi
             default:
                 return StatusCode(StatusCodes.Status500InternalServerError);
         }
+    }
+
+    /// <summary>
+    /// adds new user
+    /// </summary>
+    [AllowAnonymous]
+    [HttpPost("new_user")]
+    public async Task<ActionResult<User>> Login(string username, string password, CancellationToken ct)
+    {
+        var user = new User(Ulid.NewUlid())
+        {
+            FullName = username,
+            Email = username + "@gmail.com",
+            PasswordHash = BC.EnhancedHashPassword(password),
+            DateOfBirth = DateTime.Now.AddYears(-20),
+            EmploymentStatus = new EmploymentStatus.SelfEmployed(true),
+            SavingGoals = [],
+            PreferredCurrency = (Currency)"USD",
+            Accounts = [],
+        };
+
+        dbContext.Users.Add(user);
+        await dbContext.SaveChangesAsync(ct);
+
+        return user;
     }
 }
