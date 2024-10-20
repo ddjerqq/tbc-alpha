@@ -77,8 +77,8 @@ class ChatBot:
         all_answers = []
         for question in split_questions_list:
             answer = self.chatbot_response(question)
-            all_answers.append(answer) if answer != "" else ""
-        if not all_answers == "":
+            all_answers.append(answer) if answer != "" else []
+        if not all_answers == []:
             final_answers = "\n\n".join(all_answers)
         else:
             final_answers = "Sorry! I don't have enough information about your question. Or there is some technical issues."
