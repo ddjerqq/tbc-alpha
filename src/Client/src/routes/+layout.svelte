@@ -1,22 +1,11 @@
 <script>
-  import Icon from "heroicons-for-svelte";
-  import {Home, SwitchHorizontal, User} from "heroicons-for-svelte/icons/outline";
+  import NavBar from "$lib/components/NavBar.svelte";
 </script>
 
-<div class="w-full h-full flex flex-col justify-between">
-    <slot></slot>
+<div class="w-full h-full flex flex-col justify-between px-5 bg-neutral-100 bg-topo">
+    <main class="my-10 h-[calc(100% + 10rem)] flex flex-col justify-center align-middle items-center">
+        <slot></slot>
+    </main>
 
-    <footer class="w-full bg-gray-300 flex justify-around items-center align-middle p-3">
-        <a href="/" class="bg-gray-400 p-3 rounded-md">
-            <Icon icon={Home} class="text-2xl"/>
-        </a>
-
-        <a href="/" class="bg-gray-400 p-3 rounded-md">
-            <Icon icon={SwitchHorizontal} class="text-2xl"/>
-        </a>
-
-        <a href="/" class="bg-gray-400 p-3 rounded-md">
-            <Icon icon={User} class="text-2xl"/>
-        </a>
-    </footer>
+    <NavBar/>
 </div>
