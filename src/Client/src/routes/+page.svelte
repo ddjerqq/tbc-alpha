@@ -26,15 +26,29 @@
     PaperClip,
     Eye
   } from "heroicons-for-svelte/icons/outline";
-</script>
 
-<svelte:head>
-    <title>Home</title>
-    <meta name="description" content="Svelte demo app"/>
-</svelte:head>
+  let advices = [
+    "You've spent $1000 in your needs, which is 35% of your income and 30% of your total monthly spending. This means you are spending more than 70% of your total spending is in categories that are not very important.",
+    "Your spending is too high at 89% of your income. It's time to reevaluate and cut down on non-essential costs.",
+    "You're spending a significant amount 54% on shopping. Try to set a monthly budget to manage this better.",
+    "You have $2000 saved so far in your emergency fund. To complete it, aim to save an additional $1500.",
+    "You're saving 10% of your income. That's a good start, but you might want to increase your savings to prepare for long-term goals.",
+    "You're making great progress! You've reached 64% of your goals. Keep going, you're almost there.",
+  ];
+
+  let selectedButtonIndex = -1;
+  let buttonColors = ["", "", "", ""];
+
+  function setColor(color: string) {
+    if (selectedButtonIndex !== -1) {
+      buttonColors[selectedButtonIndex] = color;
+    }
+  }
+</script>
 
 <div class="w-full flex justify-center">
     <div class="w-full max-w-[400px] flex flex-col gap-2">
+        <!-- qr login-->
         <Card.Root class="rounded-2xl">
             <Card.Header>
                 <Card.Title class="flex justify-between">
@@ -83,6 +97,7 @@
             </Card.Footer>
         </Card.Root>
 
+        <!-- modular ui-->
         <Card.Root class="rounded-2xl">
             <Card.Content class="w-full grid justify-between grid-cols-4 gap-3">
                 <div class="bg-sky-50 text-sky-400 border-2 border-sky-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
@@ -149,6 +164,7 @@
             </Card.Content>
         </Card.Root>
 
+        <!-- transactions-->
         <Card.Root class="rounded-2xl">
             <Card.Header>
                 <Card.Title class="flex justify-between">
@@ -158,8 +174,30 @@
                     </div>
 
                     <div class="flex items-center text-gray-500 gap-2 text-sm">
-                        <Icon icon={Eye}/>
-                        View all
+                        <AlertDialog.Root>
+                            <AlertDialog.Trigger asChild let:builder>
+                                <Button builders={[builder]} variant="outline"
+                                        class="flex items-center gap-2 bg-green-50 border border-green-100 text-green-600">
+                                    <Icon icon={Eye} class="text-xl"/>
+                                    Get financial advice
+                                </Button>
+                            </AlertDialog.Trigger>
+                            <AlertDialog.Content class="rounded-2xl">
+                                <AlertDialog.Header>
+                                    <AlertDialog.Title class="text-start">Your financial advice</AlertDialog.Title>
+                                    <AlertDialog.Description class="flex flex-col items-stretch gap-3">
+                                        {#each advices as advice, i}
+                                            <span class="rounded-xl p-3 text-sm border bg-green-50 border-green-300 text-green-600">
+                                                {i + 1}. {advice}
+                                            </span>
+                                        {/each}
+                                    </AlertDialog.Description>
+                                </AlertDialog.Header>
+                                <AlertDialog.Footer>
+                                    <AlertDialog.Action>Close</AlertDialog.Action>
+                                </AlertDialog.Footer>
+                            </AlertDialog.Content>
+                        </AlertDialog.Root>
                     </div>
                 </Card.Title>
             </Card.Header>
