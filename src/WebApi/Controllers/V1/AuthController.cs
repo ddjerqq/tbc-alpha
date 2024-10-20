@@ -1,10 +1,16 @@
 ﻿using Application.Auth;
+using Application.Common;
 using Application.Services;
 using Domain.Aggregates;
 using Domain.ValueObjects;
+using Infrastructure.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Primitives;
+using Microsoft.IdentityModel.JsonWebTokens;
+using WebApi.Hubs;
 
 namespace WebApi.Controllers.V1;
 
@@ -12,13 +18,20 @@ namespace WebApi.Controllers.V1;
 /// Controller for authentication actions
 /// </summary>
 [Authorize]
-public sealed class AuthController(ILogger<ApiController> logger, IAppDbContext dbContext, IMediator mediator) : ApiController(logger)
+public sealed class AuthController(
+    ILogger<ApiController> logger,
+    IAppDbContext dbContext,
+    IMediator mediator,
+    JwtGenerator jwtGenerator,
+    IHttpContextAccessor httpContext,
+    IHubContext<QrLoginHub> hub) : ApiController(logger)
 {
     /// <summary>
     /// Gets the user's claims
     /// </summary>
     [HttpGet("claims")]
-    public ActionResult<Dictionary<string, string>> GetUserClaims() => Ok(User.Claims.ToDictionary(c => c.Type, c => c.Value));
+    public ActionResult<Dictionary<string, string>> GetUserClaims() =>
+        Ok(User.Claims.ToDictionary(c => c.Type, c => c.Value));
 
     /// <summary>
     /// Logs the user in
@@ -66,5 +79,20 @@ public sealed class AuthController(ILogger<ApiController> logger, IAppDbContext 
         await dbContext.SaveChangesAsync(ct);
 
         return user;
+    }
+
+    [AllowAnonymous]
+    [HttpPost("QrLogin")]
+    public async Task<ActionResult<User>> LoginWithQr()
+    {
+        var userId = User.Claims.First(x => x.Type == "sid").Value;
+
+        var user = await dbContext.Users.FindAsync(userId);
+
+        var token = jwtGenerator.GenerateToken(user.GetClaims());
+
+        await hub.Clients.All.SendAsync("GuidCheck", token);
+
+        return Ok();
     }
 }
