@@ -4,6 +4,7 @@ import nltk
 from rapidfuzz import process
 import re
 
+
 class ChatBot:
     def __init__(self, executor, lemmatizer, stemmer, intents, vocabulary, model, training_data, words, classes):
         self.executor = executor

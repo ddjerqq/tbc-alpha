@@ -158,8 +158,6 @@ class FinancialAdvisor:
         self.emergency_fund(self.current_fund, self.spending)
         self.savings_rate(self.income, self.spending)
         self.progress(self.goal_progress)
-        print("income: ", self.income, "/nspending: ", self.spending, "/nspending on needs: ", self.spending_on_needs, "/nspent_unnecessary: ", self.spent_unnecessary,
-              "/nfund: ", self.current_fund, "/ngoal_progress: ", self.goal_progress)
         try:
             return "\n".join([f"{i + 1}. {item}" for i, item in enumerate(self.advice)])
         except Exception as e:
