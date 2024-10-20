@@ -17,6 +17,7 @@
     CreditCard as CreditCardIcon,
     Collection,
     ShoppingCart,
+    EmojiHappy,
     SwitchHorizontal,
     DeviceMobile,
     Document,
@@ -27,6 +28,7 @@
     Eye
   } from "heroicons-for-svelte/icons/outline";
 
+
   let advices = [
     "You've spent $1000 in your needs, which is 35% of your income and 30% of your total monthly spending. This means you are spending more than 70% of your total spending is in categories that are not very important.",
     "Your spending is too high at 89% of your income. It's time to reevaluate and cut down on non-essential costs.",
@@ -35,15 +37,6 @@
     "You're saving 10% of your income. That's a good start, but you might want to increase your savings to prepare for long-term goals.",
     "You're making great progress! You've reached 64% of your goals. Keep going, you're almost there.",
   ];
-
-  let selectedButtonIndex = -1;
-  let buttonColors = ["", "", "", ""];
-
-  function setColor(color: string) {
-    if (selectedButtonIndex !== -1) {
-      buttonColors[selectedButtonIndex] = color;
-    }
-  }
 </script>
 
 <div class="w-full flex justify-center">
@@ -105,64 +98,76 @@
                     Top up
                 </div>
 
+                <a href="/transactions"
+                   class="bg-purple-50 text-purple-400 border-2 border-purple-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
+                    <Icon icon={Collection} class="text-3xl"/>
+                    Txn
+                </a>
+
                 <div class="bg-green-50 text-green-400 border-2 border-green-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                    <Icon icon={SwitchHorizontal} class="text-3xl"/>
-                    Transfer
+                    <Icon icon={CurrencyDollar} class="text-3xl"/>
+                    Exchange
                 </div>
 
-                <AlertDialog.Root>
-                    <AlertDialog.Trigger asChild let:builder>
-                        <Button builders={[builder]}
-                                class="hover:bg-gray-100 h-full bg-gray-50 text-gray-400 border-2 border-gray-200 border-dashed flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                            <Icon icon={Plus} class="text-3xl"/>
-                        </Button>
-                    </AlertDialog.Trigger>
-                    <AlertDialog.Content class="rounded-2xl">
-                        <AlertDialog.Header>
-                            <AlertDialog.Title class="text-start">Add widget</AlertDialog.Title>
-                            <AlertDialog.Description class="w-full grid grid-cols-3 gap-5">
-                                <div class="bg-sky-50 text-sky-400 border-2 border-sky-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                                    <Icon icon={DeviceMobile} class="text-xl"/>
-                                    Top up
-                                </div>
-
-                                <div class="bg-green-50 text-green-400 border-2 border-green-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                                    <Icon icon={SwitchHorizontal} class="text-xl"/>
-                                    Transfer
-                                </div>
-
-                                <div class="bg-green-50 text-green-400 border-2 border-green-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                                    <Icon icon={CurrencyDollar} class="text-xl"/>
-                                    Exchange
-                                </div>
-
-                                <div class="bg-blue-50 text-blue-400 border-2 border-blue-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                                    <Icon icon={Document} class="text-xl"/>
-                                    Bill
-                                </div>
-
-                                <div class="bg-orange-50 text-orange-400 border-2 border-orange-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                                    <Icon icon={PaperClip} class="text-xl"/>
-                                    Fines
-                                </div>
-
-                                <div class="bg-purple-50 text-purple-400 border-2 border-purple-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                                    <Icon icon={ReceiptTax} class="text-xl"/>
-                                    Offers
-                                </div>
-                            </AlertDialog.Description>
-                        </AlertDialog.Header>
-                        <AlertDialog.Footer>
-                            <AlertDialog.Action>Close</AlertDialog.Action>
-                        </AlertDialog.Footer>
-                    </AlertDialog.Content>
-                </AlertDialog.Root>
-
-                <div class="bg-gray-50 text-gray-400 border-2 border-gray-200 border-dashed flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
-                    <Icon icon={Plus} class="text-3xl"/>
+                <div class="bg-yellow-50 text-yellow-400 border-2 border-yellow-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">
+                    <Icon icon={EmojiHappy} class="text-3xl"/>
+                    Shaurma
                 </div>
+
+                <!--                <AlertDialog.Root>-->
+                <!--                    <AlertDialog.Trigger asChild let:builder>-->
+                <!--                        <Button builders={[builder]}-->
+                <!--                                class="hover:bg-gray-100 h-full bg-gray-50 text-gray-400 border-2 border-gray-200 border-dashed flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">-->
+                <!--                            <Icon icon={Plus} class="text-3xl"/>-->
+                <!--                        </Button>-->
+                <!--                    </AlertDialog.Trigger>-->
+                <!--                    <AlertDialog.Content class="rounded-2xl">-->
+                <!--                        <AlertDialog.Header>-->
+                <!--                            <AlertDialog.Title class="text-start">Add widget</AlertDialog.Title>-->
+                <!--                            <AlertDialog.Description class="w-full grid grid-cols-3 gap-5">-->
+                <!--                                <div class="bg-sky-50 text-sky-400 border-2 border-sky-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">-->
+                <!--                                    <Icon icon={DeviceMobile} class="text-xl"/>-->
+                <!--                                    Top up-->
+                <!--                                </div>-->
+
+                <!--                                <div class="bg-green-50 text-green-400 border-2 border-green-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">-->
+                <!--                                    <Icon icon={SwitchHorizontal} class="text-xl"/>-->
+                <!--                                    Transfer-->
+                <!--                                </div>-->
+
+                <!--                                <div class="bg-green-50 text-green-400 border-2 border-green-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">-->
+                <!--                                    <Icon icon={CurrencyDollar} class="text-xl"/>-->
+                <!--                                    Exchange-->
+                <!--                                </div>-->
+
+                <!--                                <div class="bg-blue-50 text-blue-400 border-2 border-blue-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">-->
+                <!--                                    <Icon icon={Document} class="text-xl"/>-->
+                <!--                                    Bill-->
+                <!--                                </div>-->
+
+                <!--                                <div class="bg-orange-50 text-orange-400 border-2 border-orange-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">-->
+                <!--                                    <Icon icon={PaperClip} class="text-xl"/>-->
+                <!--                                    Fines-->
+                <!--                                </div>-->
+
+                <!--                                <div class="bg-purple-50 text-purple-400 border-2 border-purple-100 flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">-->
+                <!--                                    <Icon icon={ReceiptTax} class="text-xl"/>-->
+                <!--                                    Offers-->
+                <!--                                </div>-->
+                <!--                            </AlertDialog.Description>-->
+                <!--                        </AlertDialog.Header>-->
+                <!--                        <AlertDialog.Footer>-->
+                <!--                            <AlertDialog.Action>Close</AlertDialog.Action>-->
+                <!--                        </AlertDialog.Footer>-->
+                <!--                    </AlertDialog.Content>-->
+                <!--                </AlertDialog.Root>-->
+
+                <!--                <div class="bg-gray-50 text-gray-400 border-2 border-gray-200 border-dashed flex-1 aspect-square flex flex-col justify-center font-semibold text-sm items-center rounded-2xl">-->
+                <!--                    <Icon icon={Plus} class="text-3xl"/>-->
+                <!--                </div>-->
             </Card.Content>
         </Card.Root>
+
 
         <!-- transactions-->
         <Card.Root class="rounded-2xl">
