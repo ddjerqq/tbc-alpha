@@ -1,0 +1,1367 @@
+{
+    "intents": [
+        {
+            "tag": "greetings",
+            "patterns": [
+                "Hi",
+                "Hello",
+                "Hey",
+                "Good morning",
+                "Good evening"
+            ],
+            "responses": [
+                "Hello! How can I assist you today?",
+                "Hi there! What can I help you with?",
+                "Greetings! How may I help you?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Goodbye",
+                "Bye",
+                "See you",
+                "Talk to you later",
+                "See you later"
+            ],
+            "responses": [
+                "Goodbye! Have a great day!",
+                "See you soon!",
+                "Take care! Talk to you later."
+            ]
+        },
+        {
+            "tag": "about_chatbot",
+            "patterns": [
+                "What can you do?",
+                "Tell me about yourself",
+                "Who are you?",
+                "What is this chatbot?",
+                "What are your functions?"
+            ],
+            "responses": [
+                "I am a virtual assistant here to help you with your banking needs, from checking account balances to loan applications.",
+                "I am your banking assistant, designed to help you with various queries related to your bank account and financial services.",
+                "I can assist you with information on your account, loans, transactions, and much more. How can I help you today?"
+            ]
+        },
+        {
+            "tag": "thank_you",
+            "patterns": [
+                "Thank you",
+                "Thanks",
+                "Thanks a lot",
+                "Thank you so much",
+                "I appreciate it"
+            ],
+            "responses": [
+                "You're welcome!",
+                "Happy to help!",
+                "My pleasure!"
+            ]
+        },
+        {
+            "tag": "account_balance",
+            "patterns": [
+                "My balance?",
+                "My account balance?",
+                "How do I account balance?",
+                "Can you help me account balance?",
+                "What is the process for account balance?"
+            ],
+            "responses": [
+                "You can account balance by following the steps in our app or visiting the nearest branch.",
+                "To account balance, log in to your account and navigate to the account balance section.",
+                "account balance can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "open_account",
+            "patterns": [
+                "How do I open account?",
+                "Can you help me open account?",
+                "What is the process for open account?"
+            ],
+            "responses": [
+                "You can open account by following the steps in our app or visiting the nearest branch.",
+                "To open account, log in to your account and navigate to the open account section.",
+                "open account can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_application",
+            "patterns": [
+                "loan",
+                "How do I loan application?",
+                "Can you help me loan application?",
+                "What is the process for loan application?"
+            ],
+            "responses": [
+                "You can loan application by following the steps in our app or visiting the nearest branch.",
+                "To loan application, log in to your account and navigate to the loan application section.",
+                "loan application can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "transaction_history",
+            "patterns": [
+                "How do I transaction history?",
+                "Can you help me transaction history?",
+                "What is the process for transaction history?"
+            ],
+            "responses": [
+                "You can transaction history by following the steps in our app or visiting the nearest branch.",
+                "To transaction history, log in to your account and navigate to the transaction history section.",
+                "transaction history can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "customer_support",
+            "patterns": [
+                "How do I customer support?",
+                "Can you help me customer support?",
+                "What is the process for customer support?"
+            ],
+            "responses": [
+                "You can customer support by following the steps in our app or visiting the nearest branch.",
+                "To customer support, log in to your account and navigate to the customer support section.",
+                "customer support can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "credit_card_application",
+            "patterns": [
+                "How do I credit card application?",
+                "Can you help me credit card application?",
+                "What is the process for credit card application?"
+            ],
+            "responses": [
+                "You can credit card application by following the steps in our app or visiting the nearest branch.",
+                "To credit card application, log in to your account and navigate to the credit card application section.",
+                "credit card application can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "interest_rates",
+            "patterns": [
+                "How do I interest rates?",
+                "Can you help me interest rates?",
+                "What is the process for interest rates?"
+            ],
+            "responses": [
+                "You can interest rates by following the steps in our app or visiting the nearest branch.",
+                "To interest rates, log in to your account and navigate to the interest rates section.",
+                "interest rates can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "mortgage_information",
+            "patterns": [
+                "How do I mortgage information?",
+                "Can you help me mortgage information?",
+                "What is the process for mortgage information?"
+            ],
+            "responses": [
+                "You can mortgage information by following the steps in our app or visiting the nearest branch.",
+                "To mortgage information, log in to your account and navigate to the mortgage information section.",
+                "mortgage information can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "currency_exchange",
+            "patterns": [
+                "How do I currency exchange?",
+                "Can you help me currency exchange?",
+                "What is the process for currency exchange?"
+            ],
+            "responses": [
+                "You can currency exchange by following the steps in our app or visiting the nearest branch.",
+                "To currency exchange, log in to your account and navigate to the currency exchange section.",
+                "currency exchange can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "branch_locator",
+            "patterns": [
+                "How do I branch locator?",
+                "Can you help me branch locator?",
+                "What is the process for branch locator?"
+            ],
+            "responses": [
+                "You can branch locator by following the steps in our app or visiting the nearest branch.",
+                "To branch locator, log in to your account and navigate to the branch locator section.",
+                "branch locator can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "account_closure",
+            "patterns": [
+                "How do I account closure?",
+                "Can you help me account closure?",
+                "What is the process for account closure?"
+            ],
+            "responses": [
+                "You can account closure by following the steps in our app or visiting the nearest branch.",
+                "To account closure, log in to your account and navigate to the account closure section.",
+                "account closure can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "debit_card_issue",
+            "patterns": [
+                "How do I debit card issue?",
+                "Can you help me debit card issue?",
+                "What is the process for debit card issue?"
+            ],
+            "responses": [
+                "You can debit card issue by following the steps in our app or visiting the nearest branch.",
+                "To debit card issue, log in to your account and navigate to the debit card issue section.",
+                "debit card issue can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "overdraft_protection",
+            "patterns": [
+                "How do I overdraft protection?",
+                "Can you help me overdraft protection?",
+                "What is the process for overdraft protection?"
+            ],
+            "responses": [
+                "You can overdraft protection by following the steps in our app or visiting the nearest branch.",
+                "To overdraft protection, log in to your account and navigate to the overdraft protection section.",
+                "overdraft protection can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "password_reset",
+            "patterns": [
+                "How do I password reset?",
+                "Can you help me password reset?",
+                "What is the process for password reset?"
+            ],
+            "responses": [
+                "You can password reset by following the steps in our app or visiting the nearest branch.",
+                "To password reset, log in to your account and navigate to the password reset section.",
+                "password reset can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "fraud_report",
+            "patterns": [
+                "How do I fraud report?",
+                "Can you help me fraud report?",
+                "What is the process for fraud report?"
+            ],
+            "responses": [
+                "You can fraud report by following the steps in our app or visiting the nearest branch.",
+                "To fraud report, log in to your account and navigate to the fraud report section.",
+                "fraud report can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "foreign_transaction_fee",
+            "patterns": [
+                "How do I foreign transaction fee?",
+                "Can you help me foreign transaction fee?",
+                "What is the process for foreign transaction fee?"
+            ],
+            "responses": [
+                "You can foreign transaction fee by following the steps in our app or visiting the nearest branch.",
+                "To foreign transaction fee, log in to your account and navigate to the foreign transaction fee section.",
+                "foreign transaction fee can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "mobile_banking_setup",
+            "patterns": [
+                "How do I mobile banking setup?",
+                "Can you help me mobile banking setup?",
+                "What is the process for mobile banking setup?"
+            ],
+            "responses": [
+                "You can mobile banking setup by following the steps in our app or visiting the nearest branch.",
+                "To mobile banking setup, log in to your account and navigate to the mobile banking setup section.",
+                "mobile banking setup can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "atm_locator",
+            "patterns": [
+                "How do I atm locator?",
+                "Can you help me atm locator?",
+                "What is the process for atm locator?"
+            ],
+            "responses": [
+                "You can atm locator by following the steps in our app or visiting the nearest branch.",
+                "To atm locator, log in to your account and navigate to the atm locator section.",
+                "atm locator can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "investment_options",
+            "patterns": [
+                "How do I investment options?",
+                "Can you help me investment options?",
+                "What is the process for investment options?"
+            ],
+            "responses": [
+                "You can investment options by following the steps in our app or visiting the nearest branch.",
+                "To investment options, log in to your account and navigate to the investment options section.",
+                "investment options can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "wire_transfer_status",
+            "patterns": [
+                "How do I wire transfer status?",
+                "Can you help me wire transfer status?",
+                "What is the process for wire transfer status?"
+            ],
+            "responses": [
+                "You can wire transfer status by following the steps in our app or visiting the nearest branch.",
+                "To wire transfer status, log in to your account and navigate to the wire transfer status section.",
+                "wire transfer status can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "direct_deposit_setup",
+            "patterns": [
+                "How do I direct deposit setup?",
+                "Can you help me direct deposit setup?",
+                "What is the process for direct deposit setup?"
+            ],
+            "responses": [
+                "You can direct deposit setup by following the steps in our app or visiting the nearest branch.",
+                "To direct deposit setup, log in to your account and navigate to the direct deposit setup section.",
+                "direct deposit setup can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_eligibility",
+            "patterns": [
+                "How do I loan eligibility?",
+                "Can you help me loan eligibility?",
+                "What is the process for loan eligibility?"
+            ],
+            "responses": [
+                "You can loan eligibility by following the steps in our app or visiting the nearest branch.",
+                "To loan eligibility, log in to your account and navigate to the loan eligibility section.",
+                "loan eligibility can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "debt_consolidation",
+            "patterns": [
+                "How do I debt consolidation?",
+                "Can you help me debt consolidation?",
+                "What is the process for debt consolidation?"
+            ],
+            "responses": [
+                "You can debt consolidation by following the steps in our app or visiting the nearest branch.",
+                "To debt consolidation, log in to your account and navigate to the debt consolidation section.",
+                "debt consolidation can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "refinance_options",
+            "patterns": [
+                "How do I refinance options?",
+                "Can you help me refinance options?",
+                "What is the process for refinance options?"
+            ],
+            "responses": [
+                "You can refinance options by following the steps in our app or visiting the nearest branch.",
+                "To refinance options, log in to your account and navigate to the refinance options section.",
+                "refinance options can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "savings_account_interest",
+            "patterns": [
+                "How do I savings account interest?",
+                "Can you help me savings account interest?",
+                "What is the process for savings account interest?"
+            ],
+            "responses": [
+                "You can savings account interest by following the steps in our app or visiting the nearest branch.",
+                "To savings account interest, log in to your account and navigate to the savings account interest section.",
+                "savings account interest can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "fixed_deposit_info",
+            "patterns": [
+                "How do I fixed deposit info?",
+                "Can you help me fixed deposit info?",
+                "What is the process for fixed deposit info?"
+            ],
+            "responses": [
+                "You can fixed deposit info by following the steps in our app or visiting the nearest branch.",
+                "To fixed deposit info, log in to your account and navigate to the fixed deposit info section.",
+                "fixed deposit info can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "online_banking_help",
+            "patterns": [
+                "How do I online banking help?",
+                "Can you help me online banking help?",
+                "What is the process for online banking help?"
+            ],
+            "responses": [
+                "You can online banking help by following the steps in our app or visiting the nearest branch.",
+                "To online banking help, log in to your account and navigate to the online banking help section.",
+                "online banking help can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "statement_request",
+            "patterns": [
+                "How do I statement request?",
+                "Can you help me statement request?",
+                "What is the process for statement request?"
+            ],
+            "responses": [
+                "You can statement request by following the steps in our app or visiting the nearest branch.",
+                "To statement request, log in to your account and navigate to the statement request section.",
+                "statement request can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "check_deposit_issue",
+            "patterns": [
+                "How do I check deposit issue?",
+                "Can you help me check deposit issue?",
+                "What is the process for check deposit issue?"
+            ],
+            "responses": [
+                "You can check deposit issue by following the steps in our app or visiting the nearest branch.",
+                "To check deposit issue, log in to your account and navigate to the check deposit issue section.",
+                "check deposit issue can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "international_banking",
+            "patterns": [
+                "How do I international banking?",
+                "Can you help me international banking?",
+                "What is the process for international banking?"
+            ],
+            "responses": [
+                "You can international banking by following the steps in our app or visiting the nearest branch.",
+                "To international banking, log in to your account and navigate to the international banking section.",
+                "international banking can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "account_suspension",
+            "patterns": [
+                "How do I account suspension?",
+                "Can you help me account suspension?",
+                "What is the process for account suspension?"
+            ],
+            "responses": [
+                "You can account suspension by following the steps in our app or visiting the nearest branch.",
+                "To account suspension, log in to your account and navigate to the account suspension section.",
+                "account suspension can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "multi-currency_account",
+            "patterns": [
+                "How do I multi-currency account?",
+                "Can you help me multi-currency account?",
+                "What is the process for multi-currency account?"
+            ],
+            "responses": [
+                "You can multi-currency account by following the steps in our app or visiting the nearest branch.",
+                "To multi-currency account, log in to your account and navigate to the multi-currency account section.",
+                "multi-currency account can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "credit_limit_increase",
+            "patterns": [
+                "How do I credit limit increase?",
+                "Can you help me credit limit increase?",
+                "What is the process for credit limit increase?"
+            ],
+            "responses": [
+                "You can credit limit increase by following the steps in our app or visiting the nearest branch.",
+                "To credit limit increase, log in to your account and navigate to the credit limit increase section.",
+                "credit limit increase can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_payment_schedule",
+            "patterns": [
+                "How do I loan payment schedule?",
+                "Can you help me loan payment schedule?",
+                "What is the process for loan payment schedule?"
+            ],
+            "responses": [
+                "You can loan payment schedule by following the steps in our app or visiting the nearest branch.",
+                "To loan payment schedule, log in to your account and navigate to the loan payment schedule section.",
+                "loan payment schedule can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "late_fee_info",
+            "patterns": [
+                "How do I late fee info?",
+                "Can you help me late fee info?",
+                "What is the process for late fee info?"
+            ],
+            "responses": [
+                "You can late fee info by following the steps in our app or visiting the nearest branch.",
+                "To late fee info, log in to your account and navigate to the late fee info section.",
+                "late fee info can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "auto_loan_application",
+            "patterns": [
+                "How do I auto loan application?",
+                "Can you help me auto loan application?",
+                "What is the process for auto loan application?"
+            ],
+            "responses": [
+                "You can auto loan application by following the steps in our app or visiting the nearest branch.",
+                "To auto loan application, log in to your account and navigate to the auto loan application section.",
+                "auto loan application can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "personal_loan_information",
+            "patterns": [
+                "How do I personal loan information?",
+                "Can you help me personal loan information?",
+                "What is the process for personal loan information?"
+            ],
+            "responses": [
+                "You can personal loan information by following the steps in our app or visiting the nearest branch.",
+                "To personal loan information, log in to your account and navigate to the personal loan information section.",
+                "personal loan information can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "student_loan_options",
+            "patterns": [
+                "How do I student loan options?",
+                "Can you help me student loan options?",
+                "What is the process for student loan options?"
+            ],
+            "responses": [
+                "You can student loan options by following the steps in our app or visiting the nearest branch.",
+                "To student loan options, log in to your account and navigate to the student loan options section.",
+                "student loan options can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "tax_documents_request",
+            "patterns": [
+                "How do I tax documents request?",
+                "Can you help me tax documents request?",
+                "What is the process for tax documents request?"
+            ],
+            "responses": [
+                "You can tax documents request by following the steps in our app or visiting the nearest branch.",
+                "To tax documents request, log in to your account and navigate to the tax documents request section.",
+                "tax documents request can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_repayment_issue",
+            "patterns": [
+                "How do I loan repayment issue?",
+                "Can you help me loan repayment issue?",
+                "What is the process for loan repayment issue?"
+            ],
+            "responses": [
+                "You can loan repayment issue by following the steps in our app or visiting the nearest branch.",
+                "To loan repayment issue, log in to your account and navigate to the loan repayment issue section.",
+                "loan repayment issue can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "account_freeze",
+            "patterns": [
+                "How do I account freeze?",
+                "Can you help me account freeze?",
+                "What is the process for account freeze?"
+            ],
+            "responses": [
+                "You can account freeze by following the steps in our app or visiting the nearest branch.",
+                "To account freeze, log in to your account and navigate to the account freeze section.",
+                "account freeze can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "lost_debit_card",
+            "patterns": [
+                "How do I lost debit card?",
+                "Can you help me lost debit card?",
+                "What is the process for lost debit card?"
+            ],
+            "responses": [
+                "You can lost debit card by following the steps in our app or visiting the nearest branch.",
+                "To lost debit card, log in to your account and navigate to the lost debit card section.",
+                "lost debit card can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "balance_transfer_help",
+            "patterns": [
+                "How do I balance transfer help?",
+                "Can you help me balance transfer help?",
+                "What is the process for balance transfer help?"
+            ],
+            "responses": [
+                "You can balance transfer help by following the steps in our app or visiting the nearest branch.",
+                "To balance transfer help, log in to your account and navigate to the balance transfer help section.",
+                "balance transfer help can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "bill_payment_setup",
+            "patterns": [
+                "How do I bill payment setup?",
+                "Can you help me bill payment setup?",
+                "What is the process for bill payment setup?"
+            ],
+            "responses": [
+                "You can bill payment setup by following the steps in our app or visiting the nearest branch.",
+                "To bill payment setup, log in to your account and navigate to the bill payment setup section.",
+                "bill payment setup can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "recurring_payment_setup",
+            "patterns": [
+                "How do I recurring payment setup?",
+                "Can you help me recurring payment setup?",
+                "What is the process for recurring payment setup?"
+            ],
+            "responses": [
+                "You can recurring payment setup by following the steps in our app or visiting the nearest branch.",
+                "To recurring payment setup, log in to your account and navigate to the recurring payment setup section.",
+                "recurring payment setup can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_interest_calculation",
+            "patterns": [
+                "How do I loan interest calculation?",
+                "Can you help me loan interest calculation?",
+                "What is the process for loan interest calculation?"
+            ],
+            "responses": [
+                "You can loan interest calculation by following the steps in our app or visiting the nearest branch.",
+                "To loan interest calculation, log in to your account and navigate to the loan interest calculation section.",
+                "loan interest calculation can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "account_verification",
+            "patterns": [
+                "How do I account verification?",
+                "Can you help me account verification?",
+                "What is the process for account verification?"
+            ],
+            "responses": [
+                "You can account verification by following the steps in our app or visiting the nearest branch.",
+                "To account verification, log in to your account and navigate to the account verification section.",
+                "account verification can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "document_submission",
+            "patterns": [
+                "How do I document submission?",
+                "Can you help me document submission?",
+                "What is the process for document submission?"
+            ],
+            "responses": [
+                "You can document submission by following the steps in our app or visiting the nearest branch.",
+                "To document submission, log in to your account and navigate to the document submission section.",
+                "document submission can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_pre_approval",
+            "patterns": [
+                "How do I loan pre approval?",
+                "Can you help me loan pre approval?",
+                "What is the process for loan pre approval?"
+            ],
+            "responses": [
+                "You can loan pre approval by following the steps in our app or visiting the nearest branch.",
+                "To loan pre approval, log in to your account and navigate to the loan pre approval section.",
+                "loan pre approval can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "credit_report_request",
+            "patterns": [
+                "How do I credit report request?",
+                "Can you help me credit report request?",
+                "What is the process for credit report request?"
+            ],
+            "responses": [
+                "You can credit report request by following the steps in our app or visiting the nearest branch.",
+                "To credit report request, log in to your account and navigate to the credit report request section.",
+                "credit report request can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "mortgage_pre_approval",
+            "patterns": [
+                "How do I mortgage pre approval?",
+                "Can you help me mortgage pre approval?",
+                "What is the process for mortgage pre approval?"
+            ],
+            "responses": [
+                "You can mortgage pre approval by following the steps in our app or visiting the nearest branch.",
+                "To mortgage pre approval, log in to your account and navigate to the mortgage pre approval section.",
+                "mortgage pre approval can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "security_questions_reset",
+            "patterns": [
+                "How do I security questions reset?",
+                "Can you help me security questions reset?",
+                "What is the process for security questions reset?"
+            ],
+            "responses": [
+                "You can security questions reset by following the steps in our app or visiting the nearest branch.",
+                "To security questions reset, log in to your account and navigate to the security questions reset section.",
+                "security questions reset can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "funds_transfer",
+            "patterns": [
+                "How do I funds transfer?",
+                "Can you help me funds transfer?",
+                "What is the process for funds transfer?"
+            ],
+            "responses": [
+                "You can funds transfer by following the steps in our app or visiting the nearest branch.",
+                "To funds transfer, log in to your account and navigate to the funds transfer section.",
+                "funds transfer can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "fixed_rate_loan_info",
+            "patterns": [
+                "How do I fixed rate loan info?",
+                "Can you help me fixed rate loan info?",
+                "What is the process for fixed rate loan info?"
+            ],
+            "responses": [
+                "You can fixed rate loan info by following the steps in our app or visiting the nearest branch.",
+                "To fixed rate loan info, log in to your account and navigate to the fixed rate loan info section.",
+                "fixed rate loan info can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "variable_rate_loan_info",
+            "patterns": [
+                "How do I variable rate loan info?",
+                "Can you help me variable rate loan info?",
+                "What is the process for variable rate loan info?"
+            ],
+            "responses": [
+                "You can variable rate loan info by following the steps in our app or visiting the nearest branch.",
+                "To variable rate loan info, log in to your account and navigate to the variable rate loan info section.",
+                "variable rate loan info can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_deferral_request",
+            "patterns": [
+                "How do I loan deferral request?",
+                "Can you help me loan deferral request?",
+                "What is the process for loan deferral request?"
+            ],
+            "responses": [
+                "You can loan deferral request by following the steps in our app or visiting the nearest branch.",
+                "To loan deferral request, log in to your account and navigate to the loan deferral request section.",
+                "loan deferral request can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "business_account_opening",
+            "patterns": [
+                "How do I business account opening?",
+                "Can you help me business account opening?",
+                "What is the process for business account opening?"
+            ],
+            "responses": [
+                "You can business account opening by following the steps in our app or visiting the nearest branch.",
+                "To business account opening, log in to your account and navigate to the business account opening section.",
+                "business account opening can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "account_upgrade",
+            "patterns": [
+                "How do I account upgrade?",
+                "Can you help me account upgrade?",
+                "What is the process for account upgrade?"
+            ],
+            "responses": [
+                "You can account upgrade by following the steps in our app or visiting the nearest branch.",
+                "To account upgrade, log in to your account and navigate to the account upgrade section.",
+                "account upgrade can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "minimum_balance_requirement",
+            "patterns": [
+                "How do I minimum balance requirement?",
+                "Can you help me minimum balance requirement?",
+                "What is the process for minimum balance requirement?"
+            ],
+            "responses": [
+                "You can minimum balance requirement by following the steps in our app or visiting the nearest branch.",
+                "To minimum balance requirement, log in to your account and navigate to the minimum balance requirement section.",
+                "minimum balance requirement can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "checking_account_features",
+            "patterns": [
+                "How do I checking account features?",
+                "Can you help me checking account features?",
+                "What is the process for checking account features?"
+            ],
+            "responses": [
+                "You can checking account features by following the steps in our app or visiting the nearest branch.",
+                "To checking account features, log in to your account and navigate to the checking account features section.",
+                "checking account features can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "saving_account_features",
+            "patterns": [
+                "How do I saving account features?",
+                "Can you help me saving account features?",
+                "What is the process for saving account features?"
+            ],
+            "responses": [
+                "You can saving account features by following the steps in our app or visiting the nearest branch.",
+                "To saving account features, log in to your account and navigate to the saving account features section.",
+                "saving account features can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "credit_score_check",
+            "patterns": [
+                "How do I credit score check?",
+                "Can you help me credit score check?",
+                "What is the process for credit score check?"
+            ],
+            "responses": [
+                "You can credit score check by following the steps in our app or visiting the nearest branch.",
+                "To credit score check, log in to your account and navigate to the credit score check section.",
+                "credit score check can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "mobile_wallet_integration",
+            "patterns": [
+                "How do I mobile wallet integration?",
+                "Can you help me mobile wallet integration?",
+                "What is the process for mobile wallet integration?"
+            ],
+            "responses": [
+                "You can mobile wallet integration by following the steps in our app or visiting the nearest branch.",
+                "To mobile wallet integration, log in to your account and navigate to the mobile wallet integration section.",
+                "mobile wallet integration can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "pin_reset",
+            "patterns": [
+                "How do I pin reset?",
+                "Can you help me pin reset?",
+                "What is the process for pin reset?"
+            ],
+            "responses": [
+                "You can pin reset by following the steps in our app or visiting the nearest branch.",
+                "To pin reset, log in to your account and navigate to the pin reset section.",
+                "pin reset can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "virtual_card_request",
+            "patterns": [
+                "How do I virtual card request?",
+                "Can you help me virtual card request?",
+                "What is the process for virtual card request?"
+            ],
+            "responses": [
+                "You can virtual card request by following the steps in our app or visiting the nearest branch.",
+                "To virtual card request, log in to your account and navigate to the virtual card request section.",
+                "virtual card request can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "account_statement_download",
+            "patterns": [
+                "How do I account statement download?",
+                "Can you help me account statement download?",
+                "What is the process for account statement download?"
+            ],
+            "responses": [
+                "You can account statement download by following the steps in our app or visiting the nearest branch.",
+                "To account statement download, log in to your account and navigate to the account statement download section.",
+                "account statement download can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_closing_process",
+            "patterns": [
+                "How do I loan closing process?",
+                "Can you help me loan closing process?",
+                "What is the process for loan closing process?"
+            ],
+            "responses": [
+                "You can loan closing process by following the steps in our app or visiting the nearest branch.",
+                "To loan closing process, log in to your account and navigate to the loan closing process section.",
+                "loan closing process can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "atm_withdrawal_limit",
+            "patterns": [
+                "How do I atm withdrawal limit?",
+                "Can you help me atm withdrawal limit?",
+                "What is the process for atm withdrawal limit?"
+            ],
+            "responses": [
+                "You can atm withdrawal limit by following the steps in our app or visiting the nearest branch.",
+                "To atm withdrawal limit, log in to your account and navigate to the atm withdrawal limit section.",
+                "atm withdrawal limit can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "annual_fee_info",
+            "patterns": [
+                "How do I annual fee info?",
+                "Can you help me annual fee info?",
+                "What is the process for annual fee info?"
+            ],
+            "responses": [
+                "You can annual fee info by following the steps in our app or visiting the nearest branch.",
+                "To annual fee info, log in to your account and navigate to the annual fee info section.",
+                "annual fee info can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "mobile_check_deposit",
+            "patterns": [
+                "How do I mobile check deposit?",
+                "Can you help me mobile check deposit?",
+                "What is the process for mobile check deposit?"
+            ],
+            "responses": [
+                "You can mobile check deposit by following the steps in our app or visiting the nearest branch.",
+                "To mobile check deposit, log in to your account and navigate to the mobile check deposit section.",
+                "mobile check deposit can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "cd_account_options",
+            "patterns": [
+                "How do I cd account options?",
+                "Can you help me cd account options?",
+                "What is the process for cd account options?"
+            ],
+            "responses": [
+                "You can cd account options by following the steps in our app or visiting the nearest branch.",
+                "To cd account options, log in to your account and navigate to the cd account options section.",
+                "cd account options can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_approval_time",
+            "patterns": [
+                "How do I loan approval time?",
+                "Can you help me loan approval time?",
+                "What is the process for loan approval time?"
+            ],
+            "responses": [
+                "You can loan approval time by following the steps in our app or visiting the nearest branch.",
+                "To loan approval time, log in to your account and navigate to the loan approval time section.",
+                "loan approval time can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "financial_advisory_service",
+            "patterns": [
+                "How do I financial advisory service?",
+                "Can you help me financial advisory service?",
+                "What is the process for financial advisory service?"
+            ],
+            "responses": [
+                "You can financial advisory service by following the steps in our app or visiting the nearest branch.",
+                "To financial advisory service, log in to your account and navigate to the financial advisory service section.",
+                "financial advisory service can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "investment_risk_profile",
+            "patterns": [
+                "How do I investment risk profile?",
+                "Can you help me investment risk profile?",
+                "What is the process for investment risk profile?"
+            ],
+            "responses": [
+                "You can investment risk profile by following the steps in our app or visiting the nearest branch.",
+                "To investment risk profile, log in to your account and navigate to the investment risk profile section.",
+                "investment risk profile can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "real_estate_loans",
+            "patterns": [
+                "How do I real estate loans?",
+                "Can you help me real estate loans?",
+                "What is the process for real estate loans?"
+            ],
+            "responses": [
+                "You can real estate loans by following the steps in our app or visiting the nearest branch.",
+                "To real estate loans, log in to your account and navigate to the real estate loans section.",
+                "real estate loans can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "international_transfer_fee",
+            "patterns": [
+                "How do I international transfer fee?",
+                "Can you help me international transfer fee?",
+                "What is the process for international transfer fee?"
+            ],
+            "responses": [
+                "You can international transfer fee by following the steps in our app or visiting the nearest branch.",
+                "To international transfer fee, log in to your account and navigate to the international transfer fee section.",
+                "international transfer fee can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "charitable_donations",
+            "patterns": [
+                "How do I charitable donations?",
+                "Can you help me charitable donations?",
+                "What is the process for charitable donations?"
+            ],
+            "responses": [
+                "You can charitable donations by following the steps in our app or visiting the nearest branch.",
+                "To charitable donations, log in to your account and navigate to the charitable donations section.",
+                "charitable donations can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "trust_account_information",
+            "patterns": [
+                "How do I trust account information?",
+                "Can you help me trust account information?",
+                "What is the process for trust account information?"
+            ],
+            "responses": [
+                "You can trust account information by following the steps in our app or visiting the nearest branch.",
+                "To trust account information, log in to your account and navigate to the trust account information section.",
+                "trust account information can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "minor_account_opening",
+            "patterns": [
+                "How do I minor account opening?",
+                "Can you help me minor account opening?",
+                "What is the process for minor account opening?"
+            ],
+            "responses": [
+                "You can minor account opening by following the steps in our app or visiting the nearest branch.",
+                "To minor account opening, log in to your account and navigate to the minor account opening section.",
+                "minor account opening can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "health_savings_account",
+            "patterns": [
+                "How do I health savings account?",
+                "Can you help me health savings account?",
+                "What is the process for health savings account?"
+            ],
+            "responses": [
+                "You can health savings account by following the steps in our app or visiting the nearest branch.",
+                "To health savings account, log in to your account and navigate to the health savings account section.",
+                "health savings account can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "retirement_savings_options",
+            "patterns": [
+                "How do I retirement savings options?",
+                "Can you help me retirement savings options?",
+                "What is the process for retirement savings options?"
+            ],
+            "responses": [
+                "You can retirement savings options by following the steps in our app or visiting the nearest branch.",
+                "To retirement savings options, log in to your account and navigate to the retirement savings options section.",
+                "retirement savings options can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_payment_methods",
+            "patterns": [
+                "How do I loan payment methods?",
+                "Can you help me loan payment methods?",
+                "What is the process for loan payment methods?"
+            ],
+            "responses": [
+                "You can loan payment methods by following the steps in our app or visiting the nearest branch.",
+                "To loan payment methods, log in to your account and navigate to the loan payment methods section.",
+                "loan payment methods can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "credit_score_improvement_tips",
+            "patterns": [
+                "How do I credit score improvement tips?",
+                "Can you help me credit score improvement tips?",
+                "What is the process for credit score improvement tips?"
+            ],
+            "responses": [
+                "You can credit score improvement tips by following the steps in our app or visiting the nearest branch.",
+                "To credit score improvement tips, log in to your account and navigate to the credit score improvement tips section.",
+                "credit score improvement tips can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "foreign_currency_order",
+            "patterns": [
+                "How do I foreign currency order?",
+                "Can you help me foreign currency order?",
+                "What is the process for foreign currency order?"
+            ],
+            "responses": [
+                "You can foreign currency order by following the steps in our app or visiting the nearest branch.",
+                "To foreign currency order, log in to your account and navigate to the foreign currency order section.",
+                "foreign currency order can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "beneficiary_setup",
+            "patterns": [
+                "How do I beneficiary setup?",
+                "Can you help me beneficiary setup?",
+                "What is the process for beneficiary setup?"
+            ],
+            "responses": [
+                "You can beneficiary setup by following the steps in our app or visiting the nearest branch.",
+                "To beneficiary setup, log in to your account and navigate to the beneficiary setup section.",
+                "beneficiary setup can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_default_info",
+            "patterns": [
+                "How do I loan default info?",
+                "Can you help me loan default info?",
+                "What is the process for loan default info?"
+            ],
+            "responses": [
+                "You can loan default info by following the steps in our app or visiting the nearest branch.",
+                "To loan default info, log in to your account and navigate to the loan default info section.",
+                "loan default info can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "card_expiration_date",
+            "patterns": [
+                "How do I card expiration date?",
+                "Can you help me card expiration date?",
+                "What is the process for card expiration date?"
+            ],
+            "responses": [
+                "You can card expiration date by following the steps in our app or visiting the nearest branch.",
+                "To card expiration date, log in to your account and navigate to the card expiration date section.",
+                "card expiration date can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "online_banking_security",
+            "patterns": [
+                "How do I online banking security?",
+                "Can you help me online banking security?",
+                "What is the process for online banking security?"
+            ],
+            "responses": [
+                "You can online banking security by following the steps in our app or visiting the nearest branch.",
+                "To online banking security, log in to your account and navigate to the online banking security section.",
+                "online banking security can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "mobile_banking_security",
+            "patterns": [
+                "How do I mobile banking security?",
+                "Can you help me mobile banking security?",
+                "What is the process for mobile banking security?"
+            ],
+            "responses": [
+                "You can mobile banking security by following the steps in our app or visiting the nearest branch.",
+                "To mobile banking security, log in to your account and navigate to the mobile banking security section.",
+                "mobile banking security can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "account_recurring_fees",
+            "patterns": [
+                "How do I account recurring fees?",
+                "Can you help me account recurring fees?",
+                "What is the process for account recurring fees?"
+            ],
+            "responses": [
+                "You can account recurring fees by following the steps in our app or visiting the nearest branch.",
+                "To account recurring fees, log in to your account and navigate to the account recurring fees section.",
+                "account recurring fees can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "cd_early_withdrawal_penalty",
+            "patterns": [
+                "How do I cd early withdrawal penalty?",
+                "Can you help me cd early withdrawal penalty?",
+                "What is the process for cd early withdrawal penalty?"
+            ],
+            "responses": [
+                "You can cd early withdrawal penalty by following the steps in our app or visiting the nearest branch.",
+                "To cd early withdrawal penalty, log in to your account and navigate to the cd early withdrawal penalty section.",
+                "cd early withdrawal penalty can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_restructuring_options",
+            "patterns": [
+                "How do I loan restructuring options?",
+                "Can you help me loan restructuring options?",
+                "What is the process for loan restructuring options?"
+            ],
+            "responses": [
+                "You can loan restructuring options by following the steps in our app or visiting the nearest branch.",
+                "To loan restructuring options, log in to your account and navigate to the loan restructuring options section.",
+                "loan restructuring options can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "joint_account_opening",
+            "patterns": [
+                "How do I joint account opening?",
+                "Can you help me joint account opening?",
+                "What is the process for joint account opening?"
+            ],
+            "responses": [
+                "You can joint account opening by following the steps in our app or visiting the nearest branch.",
+                "To joint account opening, log in to your account and navigate to the joint account opening section.",
+                "joint account opening can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "payment_dispute",
+            "patterns": [
+                "How do I payment dispute?",
+                "Can you help me payment dispute?",
+                "What is the process for payment dispute?"
+            ],
+            "responses": [
+                "You can payment dispute by following the steps in our app or visiting the nearest branch.",
+                "To payment dispute, log in to your account and navigate to the payment dispute section.",
+                "payment dispute can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "credit_card_fraud",
+            "patterns": [
+                "How do I credit card fraud?",
+                "Can you help me credit card fraud?",
+                "What is the process for credit card fraud?"
+            ],
+            "responses": [
+                "You can credit card fraud by following the steps in our app or visiting the nearest branch.",
+                "To credit card fraud, log in to your account and navigate to the credit card fraud section.",
+                "credit card fraud can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "debit_card_fraud",
+            "patterns": [
+                "How do I debit card fraud?",
+                "Can you help me debit card fraud?",
+                "What is the process for debit card fraud?"
+            ],
+            "responses": [
+                "You can debit card fraud by following the steps in our app or visiting the nearest branch.",
+                "To debit card fraud, log in to your account and navigate to the debit card fraud section.",
+                "debit card fraud can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "loan_application_status",
+            "patterns": [
+                "How do I loan application status?",
+                "Can you help me loan application status?",
+                "What is the process for loan application status?"
+            ],
+            "responses": [
+                "You can loan application status by following the steps in our app or visiting the nearest branch.",
+                "To loan application status, log in to your account and navigate to the loan application status section.",
+                "loan application status can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "tax_saving_investments",
+            "patterns": [
+                "How do I tax saving investments?",
+                "Can you help me tax saving investments?",
+                "What is the process for tax saving investments?"
+            ],
+            "responses": [
+                "You can tax saving investments by following the steps in our app or visiting the nearest branch.",
+                "To tax saving investments, log in to your account and navigate to the tax saving investments section.",
+                "tax saving investments can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "estate_planning_help",
+            "patterns": [
+                "How do I estate planning help?",
+                "Can you help me estate planning help?",
+                "What is the process for estate planning help?"
+            ],
+            "responses": [
+                "You can estate planning help by following the steps in our app or visiting the nearest branch.",
+                "To estate planning help, log in to your account and navigate to the estate planning help section.",
+                "estate planning help can be completed online or at one of our branches."
+            ]
+        },
+        {
+            "tag": "credit_card_rewards",
+            "patterns": [
+                "How do I credit card rewards?",
+                "Can you help me credit card rewards?",
+                "What is the process for credit card rewards?"
+            ],
+            "responses": [
+                "You can credit card rewards by following the steps in our app or visiting the nearest branch.",
+                "To credit card rewards, log in to your account and navigate to the credit card rewards section.",
+                "credit card rewards can be completed online or at one of our branches."
+            ]
+        }
+    ]
+}
